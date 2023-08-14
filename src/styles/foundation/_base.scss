@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "../utility/" as *;
+@use "@styles/global/" as *;
 
 @include pc {
   .is-pc {
@@ -46,7 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
-  @include font-ja();
+  @include font-en();
   font-size: var(--text-default-size);
   color: var(--text-main-color);
   line-height: 1.5;
@@ -92,7 +92,7 @@ a {
 }
 
 ::selection {
-  background: rgb(var(--color-light-blue) / 0.7);
+  background: rgb(var(--color-selection-blue-rgb) / 0.7);
 }
 
 svg {

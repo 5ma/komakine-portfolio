@@ -1,3 +1,5 @@
+@use "@styles/global/" as *;
+
 .c-font-ja {
   @include font-ja;
 }

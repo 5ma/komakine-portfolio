@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "@styles/global/" as *;
 
 // px 単位での padding, margin 調整用class
 // 指定するmarginの範囲を定義

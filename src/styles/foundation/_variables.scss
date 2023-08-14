@@ -1,4 +1,4 @@
-@use '../utility/' as *;
+@use "@styles/global/" as *;
 
 :root {
   --font-zenkaku: 'Zen Kaku Gothic New', 'Inter Variable', sans-serif;
@@ -6,7 +6,12 @@
 
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-light-blue: #9CDCFE;
+  --color-selection-blue: #1598de;
+  --color-selection-blue-rgb: 21 152 222;
+
+  --text-main-color: var(--color-white):
+  --text-default-size: #{px-to-rem(16)};
+  --bg-main-color: var(--color-black);
 
   --ease-out1: cubic-bezier(0.61, 1, 0.88, 1);
   --ease-out2: cubic-bezier(0.22, 0.61, 0.36, 1);
