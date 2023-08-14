@@ -1,0 +1,31 @@
+.l-pc-inner {
+  @include pc {
+    width: min(1200px, #{percentage(math.div(750, 950))});
+    margin-right: auto;
+    margin-left: auto;
+    &--fluid {
+      // max-widthを設けない
+      width: percentage(math.div(750, 950));
+    }
+    &--padding {
+      padding-right: 96px;
+      padding-left: 96px;
+    }
+  }
+}
+
+.l-sp-inner {
+  @include sp {
+    width: min(#{327px * $flex}, #{percentage(math.div(327, 375))});
+    margin-right: auto;
+    margin-left: auto;
+    &--fluid {
+      // max-widthを設けない
+      width: percentage(math.div(327, 375));
+    }
+    &--padding {
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+  }
+}

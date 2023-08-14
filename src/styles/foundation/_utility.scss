@@ -1,0 +1,61 @@
+@use "sass:math";
+
+// px 単位での padding, margin 調整用class
+// 指定するmarginの範囲を定義
+$adjust-min: 5;
+$adjust-max: 150;
+@for $i from $adjust-min through $adjust-max {
+  .u-mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+
+  .u-mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+
+  .u-pt-#{$i} {
+    padding-top: #{$i}px;
+  }
+
+  .u-pb-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+
+  // SP用class
+  @include sp {
+    .u-mt-sp-#{$i} {
+      margin-top: #{$i}px;
+    }
+
+    .u-mb-sp-#{$i} {
+      margin-bottom: #{$i}px;
+    }
+
+    .u-pt-sp-#{$i} {
+      padding-top: #{$i}px;
+    }
+
+    .u-pb-sp-#{$i} {
+      padding-bottom: #{$i}px;
+    }
+  }
+
+  // PC用class
+  @include pc {
+    .u-mt-pc-#{$i} {
+      margin-top: #{$i}px;
+    }
+
+    .u-mb-pc-#{$i} {
+      margin-bottom: #{$i}px;
+    }
+
+    .u-pt-pc-#{$i} {
+      padding-top: #{$i}px;
+    }
+
+    .u-pb-pc-#{$i} {
+      padding-bottom: #{$i}px;
+    }
+  }
+}

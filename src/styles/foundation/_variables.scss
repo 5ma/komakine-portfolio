@@ -1,0 +1,17 @@
+@use '../utility/' as *;
+
+:root {
+  --font-zenkaku: 'Zen Kaku Gothic New', 'Inter Variable', sans-serif;
+  --font-inter: 'Inter Variable', 'Zen Kaku Gothic New', sans-serif;
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-light-blue: #9CDCFE;
+
+  --ease-out1: cubic-bezier(0.61, 1, 0.88, 1);
+  --ease-out2: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out3: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-out4: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out5: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out6: cubic-bezier(0.16, 1, 0.3, 1);
+}
