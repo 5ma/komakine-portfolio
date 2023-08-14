@@ -12,7 +12,9 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.0.8",
     "@fontsource/zen-kaku-gothic-new": "^5.0.7",
-    "astro": "^2.10.7"
+    "astro": "^2.10.7",
+    "autoprefixer": "^10.4.15",
+    "sass": "^1.65.1"
   },
   "volta": {
     "node": "18.17.1"
