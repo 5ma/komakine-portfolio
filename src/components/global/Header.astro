@@ -1,0 +1,32 @@
+---
+import ColorChangerCircle from "@components/global/ColorChangerCircle.astro";
+---
+
+<header class="header">
+  <div class="header__color-change">
+    <ColorChangerCircle />
+  </div>
+</header>
+
+<style lang="scss">
+  @use 'sass:math';
+  @use "@styles/global/" as *;
+
+  .header {
+    &__color-change {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      z-index: 50;
+
+      @include pc {
+        top: 40px;
+        right: 40px;
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+</style>
