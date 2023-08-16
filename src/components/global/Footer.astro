@@ -1,0 +1,38 @@
+---
+import { toolList } from '@data/global/toolList.ts';
+---
+
+<footer class="footer">
+  <dl class="link">
+    <div class="link__item">
+      <dt class="link__title">
+        GitHub
+        <div class="link__icon"></div>
+      </dt>
+      <dd class="link__description"><a href="https://github.com/komakine-anna" target="_blank" rel="noopener noreferrer">@komakine-anna</a></dd>
+      <dd class="link__description"><a href="https://github.com/5ma" target="_blank" rel="noopener noreferrer">@5ma</a></dd>
+    </div>
+    <div class="link__item">
+      <dt class="link__title">
+        Email
+        <div class="link__icon"></div>
+      </dt>
+      <dd class="link__description"><a href="mailto:komakine.anna@outlook.jp" target="_blank">komakine.anna@outlook.jp</a></dd>
+    </div>
+  </dl>
+  <dl class="tool">
+    <dt class="tool__title">Tools</dt>
+    <div class="tool__wrap">
+      {toolList.map(tool => (
+        <dd class="tool__item">{tool}</dd>
+      ))}
+    </div>
+  </dl>
+</footer>
+
+<style lang="scss">
+  @use 'sass:math';
+  @use "@styles/global/" as *;
+
+
+</style>
