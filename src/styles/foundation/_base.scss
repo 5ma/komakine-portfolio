@@ -48,7 +48,7 @@ body {
   min-height: 100dvh;
   @include font-en();
   font-size: var(--text-default-size);
-  color: var(--text-main-color);
+  color: var(--color-theme-current);
   line-height: 1.5;
   letter-spacing: 0.02em;
   text-size-adjust: 100%;

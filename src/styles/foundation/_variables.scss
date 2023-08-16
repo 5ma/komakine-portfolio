@@ -9,6 +9,13 @@
   --color-selection-blue: #1598de;
   --color-selection-blue-rgb: 21 152 222;
 
+  --color-theme-current: var(--color-theme-white);
+  --color-theme-white: var(--color-white);
+  --color-theme-yellow: #D8D8CE;
+  --color-theme-pink: #E1999A;
+  --color-theme-green: #81BDBB;
+  --color-theme-purple: #C0B5ED;
+
   --text-main-color: var(--color-white):
   --text-default-size: #{px-to-rem(16)};
   --bg-main-color: var(--color-black);
