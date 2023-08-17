@@ -1,0 +1,17 @@
+---
+interface Props {
+	label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<svg viewBox="0 0 98 96" role="img" aria-label={label}>
+  <use href="/assets/image/symbol/github_mark_white.svg#icon-github"></use>
+</svg>
+
+<style lang="scss">
+  svg {
+    fill: var(--color-theme-current);
+  }
+</style>

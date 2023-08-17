@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" >
+  <symbol viewBox="0 0 48 48" id="icon-mail">
+    <rect stroke="var(--color-theme-current)" x="6" y="13" width="36" height="29" rx="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <polyline stroke="var(--color-theme-current)" points="6 19 24 31 42 19" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </symbol>
+</svg>
