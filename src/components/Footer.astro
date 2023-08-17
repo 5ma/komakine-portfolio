@@ -1,5 +1,5 @@
 ---
-import { toolList } from '@data/global/toolList.ts';
+import { tools } from '@data/tools.ts';
 ---
 
 <footer class="footer">
@@ -23,7 +23,7 @@ import { toolList } from '@data/global/toolList.ts';
   <dl class="tool">
     <dt class="tool__title">Tools</dt>
     <div class="tool__wrap">
-      {toolList.map(tool => (
+      {tools.map(tool => (
         <dd class="tool__item">{tool}</dd>
       ))}
     </div>

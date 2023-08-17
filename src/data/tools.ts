@@ -1,4 +1,4 @@
-export const toolList: string[] = [
+export const tools: string[] = [
   'VS code',
   'slack',
   'GitHub',
@@ -7,5 +7,3 @@ export const toolList: string[] = [
   'figma',
   'PhotoShop'
 ];
-
-// export default toolList;
