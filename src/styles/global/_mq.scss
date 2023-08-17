@@ -2,6 +2,11 @@ $breakpointPc: 961; // breakpoint
 $breakpointSp: 960; // breakpoint
 $flex: 1.8;
 
+$font_flex_sp: 1.7;
+$font_shrink_sp: 0.85;
+$font_flex_pc: 1;
+$font_shrink_pc: 0.85;
+
 @mixin pc {
   @media screen and (min-width: #{$breakpointPc}px) {
     @content;

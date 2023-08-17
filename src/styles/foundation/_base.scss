@@ -50,14 +50,10 @@ body {
   font-size: var(--text-default-size);
   color: var(--color-theme-current);
   line-height: 1.5;
-  letter-spacing: 0.02em;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-wrap: anywhere;
-  @include pc {
-    letter-spacing: 0.05em;
-  }
 }
 
 button,

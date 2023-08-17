@@ -1,28 +1,40 @@
 ---
 import { tools } from '@data/tools.ts';
+import IconGitHub from '@components/svg/IconGitHub.astro';
+import IconEmail from '@components/svg/IconEmail.astro';
 ---
 
-<footer class="footer">
+<footer class="footer l-sp-inner l-pc-inner">
   <dl class="link">
     <div class="link__item">
       <dt class="link__title">
         GitHub
-        <div class="link__icon"></div>
+        <div class="link__icon">
+          <IconGitHub />
+        </div>
       </dt>
-      <dd class="link__description"><a href="https://github.com/komakine-anna" target="_blank" rel="noopener noreferrer">@komakine-anna</a></dd>
-      <dd class="link__description"><a href="https://github.com/5ma" target="_blank" rel="noopener noreferrer">@5ma</a></dd>
+      <dd class="link__description">
+        <a class="link__description-link" href="https://github.com/komakine-anna" target="_blank" rel="noopener noreferrer">@komakine-anna</a>
+      </dd>
+      <dd class="link__description">
+        <a class="link__description-link" href="https://github.com/5ma" target="_blank" rel="noopener noreferrer">@5ma</a>
+      </dd>
     </div>
     <div class="link__item">
       <dt class="link__title">
         Email
-        <div class="link__icon"></div>
+        <div class="link__icon link__icon--mail">
+          <IconEmail />
+        </div>
       </dt>
-      <dd class="link__description"><a href="mailto:komakine.anna@outlook.jp" target="_blank">komakine.anna@outlook.jp</a></dd>
+      <dd class="link__description">
+        <a class="link__description-link" href="mailto:komakine.anna@outlook.jp">komakine.anna@outlook.jp</a>
+      </dd>
     </div>
   </dl>
   <dl class="tool">
-    <dt class="tool__title">Tools</dt>
-    <div class="tool__wrap">
+    <dt class="tool__title">Application</dt>
+    <div class="tool__list">
       {tools.map(tool => (
         <dd class="tool__item">{tool}</dd>
       ))}
@@ -34,5 +46,128 @@ import { tools } from '@data/tools.ts';
   @use 'sass:math';
   @use "@styles/global/" as *;
 
+  .footer {
+    position: relative;
+    padding: 42px 0 44px;
+    border-top: 1px solid var(--color-theme-current);
 
+    @include pc {
+      padding: 60px 0 88px;
+    }
+  }
+
+  .link {
+    @include pc {
+      display: flex;
+    }
+    &__item {
+      @include pc {
+        width: 50%;
+        padding-right: 2%;
+      }
+      & + & {
+        @include sp {
+          margin-top: 33px;
+        }
+      }
+    }
+    &__title {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0 12px;
+      @include fz-vw(31, 375, 375 * $font_flex_sp, 375 * $font_shrink_sp);
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+
+      @include pc {
+        gap: 0 30px;
+        @include fz-vw(82, 1400, 1400 * $font_flex_pc, 1200 * $font_shrink_pc);
+      }
+    }
+    &__icon {
+      display: grid;
+      place-items: center;
+      width: 0.77em;
+
+      @include pc {
+        width: 0.78em;
+      }
+
+      &--mail {
+        width: 1.05em;
+        translate: -13% -7%;
+      }
+      :global(svg) {
+        width: 100%;
+      }
+    }
+    &__description {
+      margin-top: 7px;
+      @include fz-vw(20, 375, 375 * $font_flex_sp, 375 * $font_shrink_sp);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+
+      @include pc {
+        margin-top: 17px;
+        @include fz-vw(42, 1400, 1400 * $font_flex_pc, 1200 * $font_shrink_pc);
+      }
+      & + & {
+        margin-top: 13px;
+
+        @include pc {
+          margin-top: 28px;
+        }
+      }
+    }
+    &__description-link {
+      text-decoration: none;
+    }
+  }
+
+  .tool {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: max-content 1fr;
+    margin-top: 52px;
+    font-size: px-to-rem(10);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+
+    @include pc {
+      gap: 2.7em;
+      width: 50%;
+      margin: 33px 0 0 auto;
+      font-size: px-to-rem(14);
+      letter-spacing: normal;
+    }
+    &__title {
+      &::after {
+        content: '：';
+      }
+    }
+    &__list {
+      display: grid;
+      gap: 0.9em 1.5em;
+      grid-template-columns: repeat(4, max-content);
+
+      @include max-w(350) {
+        grid-template-columns: repeat(3, max-content);
+      }
+
+      @include pc {
+        grid-template-columns: repeat(4, auto);
+        gap: 0.3em 2em;
+      }
+
+      @include min-w(1400) {
+        grid-template-columns: repeat(5, max-content);
+        gap: 0.3em 6%;
+      }
+    }
+    &__item {
+      width: max-content;
+    }
+  }
 </style>
