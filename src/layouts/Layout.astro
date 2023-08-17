@@ -2,31 +2,47 @@
 import '@fontsource-variable/inter';
 import '@fontsource/zen-kaku-gothic-new';
 import '@styles/foundation/_index.scss';
-import Header from '@components/global/Header.astro';
-import Footer from '@components/global/Footer.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 
 interface Props {
-	title: string;
+	title?: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="telephone=no,address=no,email=no">
 		<meta name="robots" content="noindex" />
-		<title>{title}</title>
+		<title>{title}Komakine Anna - Portfilio</title>
 		<meta name="description" content="Astro description">
+		<link rel="icon" type="image/png" href="/favicon.png" sizes="64x64">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<meta name="theme-color" content="#000000">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	</head>
 	<body>
-		<Header />
-		<slot />
-		<Footer />
+		<div class="container">
+			<Header />
+			<main>
+				<slot />
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>
+
+<style lang="scss">
+	@use 'sass:math';
+  @use "@styles/global/" as *;
+
+	.container {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		min-height: 100vh;
+	}
+</style>
