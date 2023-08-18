@@ -2,8 +2,30 @@
 import ColorChangerCircle from "@components/ColorChangerCircle.astro";
 ---
 
-<header class="header">
-  <div class="header__color-change">
+<header class="header l-sp-inner l-pc-inner">
+  <div class="title">
+    Anna<br>
+    Komakine
+  </div>
+  <dl class="data">
+    <dt class="data__title">job</dt>
+    <dd class="data__description">'Frontend Developer'</dd>
+  </dl>
+  <dl class="network">
+    <div class="network__item">
+      <dt class="network__title">Request URL</dt>
+      <dd class="network__description">komakine-portfolio.vercel.app</dd>
+    </div>
+    <div class="network__item">
+      <dt class="network__title">Request Method</dt>
+      <dd class="network__description">GET</dd>
+    </div>
+    <div class="network__item">
+      <dt class="network__title">Status Code</dt>
+      <dd class="network__description">200 OK</dd>
+    </div>
+  </dl>
+  <div class="color-change">
     <ColorChangerCircle />
   </div>
 </header>
@@ -13,20 +35,103 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
   @use "@styles/global/" as *;
 
   .header {
-    &__color-change {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      z-index: 50;
+    position: relative;
+    padding-top: 41px;
 
-      @include pc {
-        top: 40px;
-        right: 40px;
-        width: 100px;
-        height: 100px;
+    @include pc {
+      padding-top: 62px;
+    }
+  }
+
+  .title {
+    text-transform: uppercase;
+    @include fz-vw(65, 375, $breakpointSp, 375 * $font_shrink_sp);
+    line-height: 1;
+    letter-spacing: -0.03em;
+
+    @include max-w(370) {
+      @include fz-vw(61, 370, $breakpointSp, 280);
+    }
+
+    @include pc {
+      @include fz-vw(180, 1400, 1400 * $font_flex_pc, $breakpointPc);
+      line-height: 0.95;
+    }
+  }
+
+  .data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    margin-top: 13px;
+    @include fz-vw(19, 375, $breakpointSp, 375 * $font_shrink_sp);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+
+    @include pc {
+      margin-top: 17px;
+      @include fz-vw(52, 1400, 1400 * $font_flex_pc, $breakpointPc);
+    }
+
+    &::before {
+      content: '{';
+    }
+
+    &::after {
+      content: '}';
+    }
+
+    &__title {
+      &::after {
+        content: ':';
       }
+    }
+  }
+
+  .network {
+    margin-top: 45px;
+    @include fz-vw(9, 375, $breakpointSp, 375 * $font_shrink_sp);
+    line-height: 1.3;
+
+    @include pc {
+      margin-top: 92px;
+      @include fz-vw(14, 1400, 1400 * $font_flex_pc, $breakpointPc);
+      letter-spacing: 0.01em;
+    }
+
+    &__item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+
+      & + & {
+        @include pc {
+
+          margin-top: 0.3em;
+        }
+      }
+    }
+    &__title {
+      font-weight: 600;
+      &::after {
+        content: ':';
+      }
+    }
+  }
+
+  .color-change {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 50;
+
+    @include pc {
+      top: 60px;
+      right: 60px;
+      width: 100px;
+      height: 100px;
     }
   }
 </style>
