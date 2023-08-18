@@ -19,6 +19,7 @@
     padding: 0;
     margin: 0;
     background: none;
+    rotate: -90deg;
     cursor: pointer;
   }
 
@@ -27,6 +28,9 @@
       fill: transparent;
       stroke: var(--color-theme-current);
       stroke-width: 8;
+      stroke-dasharray: 0 314;
+      stroke-dasharray: 250 314;
+      transition: stroke-dasharray .3s;
     }
   }
 </style>
