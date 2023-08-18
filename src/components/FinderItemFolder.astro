@@ -1,0 +1,68 @@
+---
+import IconFolder from '@components/svg/IconFolder.astro';
+
+interface Props {
+  title: string
+  date: `${number}.${number}.${number}`
+  href: string
+}
+
+const { title, date, href } = Astro.props;
+---
+
+<li class="item">
+  <a class="link" href={href}>
+    <div class="icon">
+      <IconFolder label='フォルダアイコン' />
+    </div>
+    <div class="title">{title}</div>
+    <div class="date">{date}</div>
+    <div class="action">View</div>
+  </a>
+</li>
+
+<style lang="scss">
+  @use 'sass:math';
+  @use "@styles/global/" as *;
+
+  .item {
+    text-align: center;
+  }
+
+  .link {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+  }
+
+  .title {
+    margin-top: 3px;
+    font-size: px-to-rem(14);
+    font-weight: 500;
+    line-height: 1.3;
+    @include pc {
+      font-size: px-to-rem(16);
+    }
+  }
+
+  .date {
+    display: none;
+  }
+
+  .action {
+    display: none;
+    text-transform: uppercase;
+  }
+
+  .icon {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1 / 1;
+    :global(svg) {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      fill: var(--color-theme-current);
+    }
+  }
+</style>
