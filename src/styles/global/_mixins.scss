@@ -78,15 +78,15 @@
 }
 
 @mixin fz-vw($font_size:10, $viewport:375, $max-limit:550, $min-limit:320) {
-  $font_size: $font_size - 10; // 10px分はremで＋するので引く
+  $font_size: $font_size - 5; // 5px分はremで＋するので引く
   $max_rate: math.div($max-limit, $viewport);
-  $font_size_max: px-to-rem($font_size * $max_rate + 10);
+  $font_size_max: px-to-rem($font_size * $max_rate + 5);
   $min_rate: math.div($min-limit, $viewport);
-  $font_size_min: px-to-rem($font_size * $min_rate + 10);
+  $font_size_min: px-to-rem($font_size * $min_rate + 5);
   $font_size_vw: get-vw($font_size, $viewport);
 
-  font-size: min(calc(#{$font_size_vw} + #{px-to-rem(10)}), #{$font_size_max});
-  font-size: clamp(#{$font_size_min}, calc(#{$font_size_vw} + #{px-to-rem(10)}), #{$font_size_max});
+  font-size: min(calc(#{$font_size_vw} + #{px-to-rem(5)}), #{$font_size_max});
+  font-size: clamp(#{$font_size_min}, calc(#{$font_size_vw} + #{px-to-rem(5)}), #{$font_size_max});
 }
 
 @mixin no-motion {
