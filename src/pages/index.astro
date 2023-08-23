@@ -2,26 +2,46 @@
 import FinderItemFolder from '@components/FinderItemFolder.astro';
 import FinderItemFile from '@components/FinderItemFile.astro';
 import Layout from '@layouts/Layout.astro';
+import ViewModeChanger from '@components/ViewModeChanger.astro';
 ---
 
 <Layout>
-	<div class="l-sp-inner l-pc-inner">
-		<ul class="finder">
+	<div class="contents l-sp-inner l-pc-inner u-pt-sp-80 u-pb-sp-82 u-pt-pc-100">
+		<div class="view-changer">
+			<ViewModeChanger />
+		</div>
+		<ul class="finder u-mt-sp-17">
 			<FinderItemFolder
 				title="Works"
 				date='2023.08.30'
 				href='/works/'
-			/>
-			<FinderItemFile
-				title="CV.txt"
-				date='2023.08.30'
-				type="text"
-				href="dksja"
+				type='folder'
 			/>
 			<FinderItemFolder
 				title="Skills"
 				date='2023.08.30'
 				href='/skills/'
+				type='folder'
+			/>
+			<FinderItemFile
+				title="About.txt"
+				date='2023.08.30'
+				type="text"
+			/>
+			<FinderItemFile
+				title="CV.txt"
+				date='2023.08.30'
+				type="text"
+			/>
+			<FinderItemFile
+				title="resume.json"
+				date='2023.08.30'
+				type="json"
+			/>
+			<FinderItemFolder
+				title="iTunes Playlist"
+				date='2023.08.30'
+				type='playlist'
 			/>
 		</ul>
 	</div>
@@ -31,12 +51,31 @@ import Layout from '@layouts/Layout.astro';
 	@use 'sass:math';
   @use "@styles/global/" as *;
 
+	.contents {
+		position: relative;
+	}
+
+	.view-changer {
+		width: fit-content;
+		margin-left: auto;
+
+		@include pc {
+			position: absolute;
+			bottom: calc(100% - 5px);
+			right: 0;
+		}
+	}
+
 	.finder {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		gap: 4px 0;
 
 		@include pc {
-			grid-template-columns: repeat(auto-fit, minmax(250px, 20%));
+			gap: 60px percentage(math.div(47.5, 1240));
+			grid-template-columns: repeat(auto-fit, minmax(170px, percentage(math.div(210, 1240))));
+			// grid-template-columns: repeat(auto-fit, minmax(170px, min(percentage(math.div(210, 1240)), 216px * 1.65)));
+			padding-bottom: 196px;
 		}
 	}
 </style>
