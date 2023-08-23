@@ -1,0 +1,99 @@
+---
+---
+
+<button type="button" class="button" aria-label="コンテンツの表示形式を切り替える">
+  <span class="type type--icon">
+    <span class="type__icon">
+      <span class="type__icon-cube"></span>
+      <span class="type__icon-cube"></span>
+      <span class="type__icon-cube"></span>
+      <span class="type__icon-cube"></span>
+    </span>
+    Icon View
+  </span>
+  <span class="type type--list">
+    <span class="type__icon">
+      <span class="type__icon-bar"></span>
+      <span class="type__icon-bar"></span>
+      <span class="type__icon-bar"></span>
+    </span>
+    List View
+  </span>
+</button>
+
+<style lang="scss">
+  @use 'sass:math';
+  @use "@styles/global/" as *;
+
+  .button {
+    position: relative;
+    width: fit-content;
+    height: auto;
+    padding: 2px 0;
+    margin: 0;
+    background: none;
+    border: 0;
+
+    &:not(:disabled),
+    &:not([aria-disabled="true"]) {
+      cursor: pointer;
+    }
+  }
+
+  .type {
+    display: grid;
+    gap: 14px;
+    align-items: center;
+    grid-template-columns: auto auto;
+    font-size: px-to-rem(12);
+    text-transform: uppercase;
+
+    @include pc {
+      gap: 18px;
+      font-size: px-to-rem(18);
+      letter-spacing: 0.03em;
+    }
+
+    &--icon {
+      :global([data-view-mode="icon"]) & {
+        display: none;
+      }
+    }
+    &--list {
+      :global([data-view-mode="list"]) & {
+        display: none;
+      }
+    }
+
+    &__icon {
+      position: relative;
+      display: grid;
+      gap: 2px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 0.75em;
+      height: 0.75em;
+
+      .type--list & {
+        gap: 3px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1px);
+        width: 1em;
+
+        @include pc {
+          translate: 0 2px;
+          gap: 5px;
+        }
+      }
+
+      &-cube {
+        background-color: var(--color-theme-current);
+      }
+
+      &-bar {
+        height: 1px;
+        background-color: var(--color-theme-current);
+      }
+    }
+  }
+</style>
