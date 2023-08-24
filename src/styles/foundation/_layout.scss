@@ -16,6 +16,38 @@
 }
 
 .l-in {
+  &__header {
+    display: grid;
+    gap: 31px 20px;
+    grid-template-columns: auto clamp(120px, percentage(math.div(120, 335)), 120px * $font_flex_sp);
+    grid-template-areas: "backLink category"
+    "tag tag";
+
+    @include pc {
+      column-gap: 10%;
+      align-items: start;
+      grid-template-columns: auto 1fr 160px;
+      grid-template-areas: "backLink tag category";
+    }
+  }
+
+  &__back {
+    grid-area: backLink;
+    margin-bottom: 2px;
+
+    @include sp {
+      align-self: end;
+    }
+  }
+
+  &__category {
+    grid-area: category;
+  }
+
+  &__tag {
+    grid-area: tag;
+  }
+
   &__content {
     @include pc {
       display: grid;
