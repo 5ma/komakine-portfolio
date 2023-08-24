@@ -3,7 +3,7 @@
 
 .l-pc-inner {
   @include pc {
-    width: calc(100% - 120px);
+    width: calc(100% - 160px);
     margin-inline: auto;
   }
 }
@@ -12,5 +12,15 @@
   @include sp {
     width: percentage(math.div(670, 750));
     margin-inline: auto;
+  }
+}
+
+.l-in {
+  &__content {
+    @include pc {
+      display: grid;
+      gap: 59px;
+      grid-template-columns: 362px 1fr;
+    }
   }
 }
