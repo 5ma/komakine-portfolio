@@ -1,8 +1,22 @@
 ---
+import ArrowBackLink from '@components/ArrowBackLink.astro';
+import CategoryDropdown from '@components/CategoryDropdown.astro';
+import FinderDetailInfo from '@components/FinderDetailInfo.astro';
+import FinderContentList from '@components/FinderContentList.astro';
+import TagList from '@components/TagList.astro';
 import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="Works | ">
-
-
+  <div class="contents l-sp-inner l-pc-inner l-in">
+    <div class="l-in__header">
+      <ArrowBackLink href='/' text='Back' />
+      <TagList />
+      <CategoryDropdown />
+    </div>
+    <div class="l-in__content">
+      <FinderDetailInfo />
+      <FinderContentList />
+    </div>
+  </div>
 </Layout>
