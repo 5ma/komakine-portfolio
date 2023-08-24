@@ -1,0 +1,116 @@
+---
+---
+
+<ul class="finder-content">
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/600x600.png" alt="">
+      </div>
+      <div class="finder-content__title">『牧場物語 Welcome！ワンダフルライフ』公式サイト</div>
+    </a>
+  </li>
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/600x600.png" alt="">
+      </div>
+      <div class="finder-content__title">【CELINE】小粋な「DANS PARIS」コレクション</div>
+    </a>
+  </li>
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/400x800.png" alt="">
+      </div>
+      <div class="finder-content__title">MAISONdes -メゾン・デ-</div>
+    </a>
+  </li>
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
+      </div>
+      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
+    </a>
+  </li>
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
+      </div>
+      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
+    </a>
+  </li>
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
+      </div>
+      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
+    </a>
+  </li>
+  <li class="finder-content__item">
+    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+      <div class="finder-content__thumb">
+        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
+      </div>
+      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
+    </a>
+  </li>
+</ul>
+
+<style lang="scss">
+  @use 'sass:math';
+  @use "@styles/global/" as *;
+
+  .finder-content {
+    display: grid;
+    gap: 35px percentage(math.div(20, 335));
+    grid-template-columns: 1fr 1fr;
+
+    @include pc {
+      gap: 38px 49px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    &__link {
+      position: relative;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    &__thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      aspect-ratio: 1;
+
+      &-img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 4px var(--color-white);
+        box-sizing: border-box;
+      }
+    }
+
+    &__title {
+      margin-top: 9px;
+      @include font-ja;
+      @include fz-vw(11, 375, 375 * $font_flex_sp, 375);
+      line-height: math.div(26, 16);
+      letter-spacing: 0.05em;
+      overflow-wrap: anywhere;
+
+      @include pc {
+        margin-top: 13px;
+        font-size: px-to-rem(16);
+      }
+    }
+  }
+</style>
