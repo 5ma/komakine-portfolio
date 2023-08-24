@@ -18,6 +18,10 @@
     gap: 11px 24px;
     flex-wrap: wrap;
     justify-content: center;
+
+    @include pc {
+      gap: 11px 34px;
+    }
   }
 
   .tag {
@@ -32,6 +36,10 @@
     background: none;
     border: 0;
     box-sizing: border-box;
+
+    @include pc {
+      font-size: px-to-rem(18);
+    }
 
     &.is-active {
       color: var(--color-theme-current);
