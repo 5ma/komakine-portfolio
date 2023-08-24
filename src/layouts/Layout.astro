@@ -4,6 +4,7 @@ import '@fontsource/zen-kaku-gothic-new';
 import '@styles/foundation/_index.scss';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import { Analytics } from '@vercel/analytics/react';
 
 interface Props {
 	title?: string;
@@ -26,13 +27,14 @@ const { title } = Astro.props;
 		<meta name="theme-color" content="#000000">
 	</head>
 	<body>
-		<div class="container" data-view-mode="list">
+		<div class="container" data-view-mode="list" data-page="works">
 			<Header />
 			<main>
 				<slot />
 			</main>
 			<Footer />
 		</div>
+		<Analytics />
 	</body>
 </html>
 
