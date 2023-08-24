@@ -10,45 +10,40 @@ interface Props {
 }
 
 const { title, date, type, href } = Astro.props;
-const InnerElement = type === 'json' ? 'a' : 'button';
 ---
 
-<li class="item">
-  {type === 'json' ? (
-    <a href={href} class="inner">
-      <div class="icon">
-        <IconJson label='jsonファイルのアイコン' />
-      </div>
-      <div class="title">{title}</div>
-      <div class="date">{date}</div>
-      <div class="action">View</div>
-    </a>
-  ) : (
-    <button type="button" class="inner">
-      <div class="icon">
-        <IconTxt label='テキストファイルのアイコン' />
-      </div>
-      <div class="title">{title}</div>
-      <div class="date">{date}</div>
-      <div class="action">Read</div>
-    </button>
-  )}
-</li>
+{type === 'json' ? (
+  <a href={href} class="wrapper">
+    <div class="icon">
+      <IconJson label='jsonファイルのアイコン' />
+    </div>
+    <div class="title">{title}</div>
+    <div class="date">{date}</div>
+    <div class="action">View</div>
+  </a>
+) : (
+  <button type="button" class="wrapper">
+    <div class="icon">
+      <IconTxt label='テキストファイルのアイコン' />
+    </div>
+    <div class="title">{title}</div>
+    <div class="date">{date}</div>
+    <div class="action">Read</div>
+  </button>
+)}
 
 <style lang="scss">
   @use 'sass:math';
   @use "@styles/global/" as *;
 
-  .item {
-    text-align: center;
-  }
-
-  .inner {
+  .wrapper {
     position: relative;
     display: block;
     width: 100%;
     padding: 0;
     margin: 0;
+    font-weight: 500;
+    text-align: center;
     text-decoration: none;
     background: none;
     border: 0;
@@ -56,6 +51,24 @@ const InnerElement = type === 'json' ? 'a' : 'button';
 
     @include sp {
       padding: 15px;
+    }
+
+    :global(#{$listViewMode}) & {
+      display: grid;
+      gap: 1px 6%;
+      grid-template-columns: percentage(math.div(130, 670)) 1fr;
+      grid-template-areas: "icon title"
+      "icon date";
+      align-items: center;
+      padding: 21px 0;
+      text-align: left;
+
+      @include pc {
+        gap: 0 50px;
+        grid-template-columns: clamp(130px, percentage(math.div(160, 1240)), 160px * 1.5) 1fr auto auto;
+        grid-template-areas: "icon title date action";
+        padding: 38px 0;
+      }
     }
 
     &[href],
@@ -75,20 +88,65 @@ const InnerElement = type === 'json' ? 'a' : 'button';
       margin-top: 0;
       @include fz-vw(16, 1400, 1400 * 2, 1400 * 0.8);
     }
+
+    :global(#{$listViewMode}) & {
+      margin-top: 0;
+      grid-area: title;
+      @include fz-vw(30, 375, 375 * 2, 375 * $font_shrink_sp);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+
+      @include sp {
+        align-self: end;
+        padding-bottom: 1%;
+      }
+
+      @include pc {
+        @include fz-vw(82, 1400, 1400, $breakpointPc);
+        letter-spacing: normal;
+      }
+    }
   }
 
   .date {
     display: none;
+
+    :global(#{$listViewMode}) & {
+      display: block;
+      grid-area: date;
+      @include fz-vw(9, 375, 375 * 2, 375 * $font_shrink_sp);
+
+      @include sp {
+        align-self: start;
+      }
+
+      @include pc {
+        @include fz-vw(18, 1400, 1400, $breakpointPc);
+        letter-spacing: 0.02em;
+      }
+    }
   }
 
   .action {
     display: none;
+    text-transform: uppercase;
+
+    :global(#{$listViewMode}) & {
+      @include pc {
+        display: block;
+        grid-area: action;
+        min-width: 4.7em;
+        @include fz-vw(22, 1400, 1400, $breakpointPc);
+        text-align: right;
+      }
+    }
   }
 
   .icon {
     display: grid;
     place-items: center;
     aspect-ratio: 1 / 1;
+
     :global(svg) {
       width: 83.5%;
       height: 83.5%;
@@ -99,6 +157,10 @@ const InnerElement = type === 'json' ? 'a' : 'button';
         width: 84%;
         height: 84%;
       }
+    }
+
+    :global(#{$listViewMode}) & {
+      grid-area: icon;
     }
   }
 </style>

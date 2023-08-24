@@ -55,12 +55,12 @@
     }
 
     &--icon {
-      :global([data-view-mode="icon"]) & {
+      :global(#{$iconViewMode}) & {
         display: none;
       }
     }
     &--list {
-      :global([data-view-mode="list"]) & {
+      :global(#{$listViewMode}) & {
         display: none;
       }
     }
