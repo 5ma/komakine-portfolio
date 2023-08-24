@@ -1,0 +1,46 @@
+---
+import IconArrow from '@components/svg/IconArrow.astro';
+
+interface Props {
+  href: string
+  text: string
+}
+
+const { href, text } = Astro.props
+---
+
+<a href={href} class="link">
+  <div class="arrow">
+    <IconArrow />
+  </div>
+  <div class="text">{text}</div>
+</a>
+
+<style lang="scss">
+  @use 'sass:math';
+  @use "@styles/global/" as *;
+
+  .link {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: .95em auto;
+    align-items: center;
+    width: fit-content;
+    padding: 4px 2px 4px 0;
+    font-size: px-to-rem(13);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include pc {
+      gap: 15px;
+      font-size: px-to-rem(18);
+    }
+  }
+
+  .arrow {
+    :global(svg) {
+      fill: var(--color-theme-current);
+    }
+  }
+</style>
