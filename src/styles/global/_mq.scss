@@ -8,13 +8,13 @@ $font_flex_pc: 1.2;
 $font_shrink_pc: 0.85;
 
 @mixin pc {
-  @media screen and (min-width: #{$breakpointPc}px) {
+  @media (width > #{$breakpointSp}px) {
     @content;
   }
 }
 
 @mixin sp {
-  @media screen and (max-width: #{$breakpointSp}px) {
+  @media (width <= #{$breakpointSp}px) {
     @content;
   }
 }
@@ -26,92 +26,74 @@ $font_shrink_pc: 0.85;
 }
 
 @mixin reduce {
-  @media screen and (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     @content;
   }
 }
 
 @mixin max-w($wid) {
-  @media screen and (max-width: #{$wid}px) {
+  @media (width <= #{$wid}px) {
     @content;
   }
 }
 
 @mixin min-w($wid) {
-  @media screen and (min-width: #{$wid}px) {
+  @media (width >= #{$wid}px) {
     @content;
   }
 }
 
 @mixin max-h($wid) {
-  @media screen and (max-height: #{$wid}px) {
+  @media (height <= #{$wid}px) {
     @content;
   }
 }
 
 @mixin min-h($wid) {
-  @media screen and (min-height: #{$wid}px) {
+  @media (height >= #{$wid}px) {
     @content;
   }
 }
 
 
 @mixin narrow {
-  @media screen and (max-width: 374px) {
-    @content;
-  }
-}
-
-@mixin ie {
-  @media (-ms-high-contrast: none) {
-    @content;
-  }
-}
-
-@mixin edge {
-  @supports (-ms-ime-align:auto) {
-    @content;
-  }
-}
-
-@mixin firefox {
-  @-moz-document url-prefix() {
+  @media (width <= 374px) {
     @content;
   }
 }
 
 @mixin port {
-  @media screen and (orientation: portrait) {
+  @media (orientation: portrait) {
     @content;
   }
 }
 
 @mixin land {
-  @media screen and (orientation: landscape) {
+  @media (orientation: landscape) {
     @content;
   }
 }
 
 @mixin pc-port {
-  @media screen and (min-width: #{$breakpoint+1}px) and (orientation: portrait) {
+  @media (width > #{$breakpointSp}px) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin pc-land {
-  @media screen and (min-width: #{$breakpoint+1}px) and (orientation: landscape) {
+  @media (width > #{$breakpointSp}px) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin sp-port {
-  @media screen and (max-width: #{$breakpoint}px) and (orientation: portrait) {
+  @media (width <= #{$breakpointSp}px) and (orientation: portrait) {
     @content;
   }
 }
 
 @mixin sp-land {
-  @media screen and (max-width: #{$breakpoint}px) and (orientation: landscape) {
+  @media (width <= #{$breakpointSp}px) and (orientation: landscape) {
     @content;
   }
 }
