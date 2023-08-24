@@ -1,7 +1,12 @@
 ---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
 ---
 
-<label class="dropdown">
+<label class:list={["dropdown", className]}>
   <span class="dropdown__label">Category</span>
   <div class="dropdown__wrapper">
     <select class="dropdown__select">

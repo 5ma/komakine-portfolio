@@ -4,12 +4,13 @@ import IconArrow from '@components/svg/IconArrow.astro';
 interface Props {
   href: string
   text: string
+  class?: string
 }
 
-const { href, text } = Astro.props
+const { href, text, class: className } = Astro.props
 ---
 
-<a href={href} class="link">
+<a href={href} class:list={["link", className]}>
   <div class="arrow">
     <IconArrow />
   </div>

@@ -1,7 +1,12 @@
 ---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
 ---
 
-<ul class="finder-content">
+<ul class:list={["finder-content", className]}>
   <li class="finder-content__item">
     <a href="" class="finder-content__link" target="_blank" rel="noopener">
       <div class="finder-content__thumb">
@@ -85,8 +90,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 5px;
+      padding: 4px;
       aspect-ratio: 1;
+
+      @include pc {
+        padding: 5px;
+      }
 
       &-img {
         display: block;
@@ -96,6 +105,10 @@
         max-height: 100%;
         box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 4px var(--color-white);
         box-sizing: border-box;
+
+        @include pc {
+          box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 5px var(--color-white);
+        }
       }
     }
 

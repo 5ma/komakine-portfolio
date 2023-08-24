@@ -1,7 +1,12 @@
 ---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
 ---
 
-<ul class="tag-list" v-show="tags.length">
+<ul class:list={["tag-list", className]} v-show="tags.length">
   <li class="tag-list__item" v-for="tag in tags" :key="tag">
     <button type="button" class="tag is-active">
       <span class="tag__text" is:raw>#{{ tag }}</span>
