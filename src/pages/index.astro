@@ -3,6 +3,7 @@ import FinderItemFolder from '@components/FinderItemFolder.astro';
 import FinderItemFile from '@components/FinderItemFile.astro';
 import Layout from '@layouts/Layout.astro';
 import ViewModeChanger from '@components/ViewModeChanger.astro';
+import FinderModal from '@components/FinderModal.vue';
 ---
 
 <Layout>
@@ -57,6 +58,7 @@ import ViewModeChanger from '@components/ViewModeChanger.astro';
 			</li>
 		</ul>
 	</div>
+	<FinderModal />
 </Layout>
 
 <style lang="scss">
