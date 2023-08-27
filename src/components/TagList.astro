@@ -8,7 +8,7 @@ const { class: className } = Astro.props
 
 <ul class:list={["tag-list", className]} v-show="tagList.length">
   <li class="tag-list__item" v-for="tag in tagList" :key="tag.displayName">
-    <button type="button" class="tag">
+    <button type="button" class="tag" :class="{ 'is-active' : selectedTags.includes(tag.value) }">
       <span class="tag__text" is:raw>#{{ tag.displayName }}</span>
     </button>
   </li>
