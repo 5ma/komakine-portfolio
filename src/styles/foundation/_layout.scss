@@ -49,10 +49,13 @@
   }
 
   &__content {
+    position: relative;
+
     @include pc {
       display: grid;
       gap: 59px;
-      grid-template-columns: 362px 1fr;
+      grid-template-columns: 303px 1px 1fr;
+      align-items: start;
     }
   }
 }
