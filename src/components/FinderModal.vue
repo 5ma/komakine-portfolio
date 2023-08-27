@@ -1,5 +1,5 @@
 <template>
-  <dialog open class="dialog" data-type="txt">
+  <dialog class="dialog" data-type="txt">
     <div class="dialog__header">
       <button type="button" class="dialog__close"></button>
       <h1 class="dialog__title">CV.txt</h1>
@@ -45,7 +45,7 @@
         テキスト<br>
       </div> -->
       <div class="dialog__playlist">
-        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:100%;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/fav/pl.u-WAGiREaddr"></iframe>
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/weekly-playlist/pl.u-NepSLlomm1"></iframe>
       </div>
     </div>
   </dialog>
@@ -137,7 +137,7 @@
 
     &__content {
       position: relative;
-      min-height: min(40svh, 400px);
+      min-height: min(40svh, 450px);
       max-height: 78vh;
       max-height: 82svh;
       font-size: px-to-rem(13);
@@ -149,7 +149,7 @@
 
       @include pc {
         font-size: px-to-rem(16);
-        min-height: min(45svh, 500px);
+        min-height: min(45svh, 450px);
       }
     }
 
