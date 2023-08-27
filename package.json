@@ -15,6 +15,7 @@
     "@fontsource/zen-kaku-gothic-new": "^5.0.7",
     "astro": "^2.10.7",
     "autoprefixer": "^10.4.15",
+    "microcms-js-sdk": "^2.5.0",
     "sass": "^1.65.1",
     "vue": "^3.3.4"
   },
