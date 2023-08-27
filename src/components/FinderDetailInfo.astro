@@ -1,22 +1,99 @@
 ---
 ---
 
-<div class="detail">
-  <h2>Information</h2>
-</div>
+  <section class="container">
+    <h2 class="title">Information</h2>
+    <h3 class="site-title">『牧場物語 Welcome！ワンダフルライフ』公式サイト</h3>
+    <dl class="data">
+      <div class="data__item">
+        <dt class="data__title">Dev</dt>
+        <dd class="data__detail">
+          PHP, Scss, JavaScript, Vue.js, jQuery, Swiper
+        </dd>
+      </div>
+      <div class="data__item">
+        <dt class="data__title">Category</dt>
+        <dd class="data__detail">
+          official, game
+        </dd>
+      </div>
+      <div class="data__item">
+        <dt class="data__title">URL</dt>
+        <dd class="data__detail">
+          <a href="https://www.bokumono.com/series/welcome/" target="_blank" rel="noopener">https://www.bokumono.com/series/welcome/</a>
+        </dd>
+      </div>
+    </dl>
+    <p class="sup">補足テキストが入ります。補足テキストが入ります。補足テキストが入ります。補足テキストが入ります。</p>
+  </section>
 
 <style lang="scss">
   @use 'sass:math';
   @use "@styles/global/" as *;
 
-  .detail {
+  .container {
+    position: sticky;
+    top: 60px;
     display: none;
-    border-right: 1px solid var(--color-white);
+    max-height: calc(100svh - 120px);
+    overflow-y: auto;
 
     @include pc {
       display: block;
       @include hover {
       }
+
     }
+  }
+
+  .title {
+    font-weight: 600;
+    font-size: px-to-rem(12);
+    text-transform: uppercase;
+  }
+
+  .site-title {
+    margin-top: 36px;
+    font-size: px-to-rem(24);
+    font-feature-settings: "palt";
+    @include font-ja;
+    line-height: math.div(38, 24);
+  }
+
+  .data {
+    margin-top: 38px;
+    &__item {
+      & + & {
+        margin-top: 37px;
+      }
+    }
+
+    &__title {
+      font-size: px-to-rem(12);
+      font-weight: 600;
+      color: var(--color-gray);
+      line-height: math.div(22, 12);
+      text-transform: uppercase;
+    }
+
+    &__detail {
+      margin-top: 6px;
+      font-size: px-to-rem(16);
+      line-height: 1.75;
+      line-height: math.div(26, 16);
+      letter-spacing: 0.04em;
+
+      :global(a) {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .sup {
+    margin-top: 36px;
+    font-size: px-to-rem(16);
+    @include font-ja;
+    line-height: math.div(28, 16);
+    letter-spacing: 0.01em;
   }
 </style>
