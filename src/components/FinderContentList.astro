@@ -6,61 +6,24 @@ interface Props {
 const { class: className } = Astro.props
 ---
 
-<ul class:list={["finder-content", className]}>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
+<ul class:list={["finder-content", className]} v-show="data.length">
+  <li
+    class="finder-content__item"
+    v-for="item in data"
+    :key="item.id"
+  >
+    <a :href="item.url" class="finder-content__link" target="_blank" rel="noopener">
       <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/600x600.png" alt="" loading="lazy">
+        <img
+          class="finder-content__thumb-img"
+          :src="item.img.url"
+          :width="item.img.width"
+          :height="item.img.height"
+          alt=""
+          loading="lazy"
+        >
       </div>
-      <div class="finder-content__title">『牧場物語 Welcome！ワンダフルライフ』公式サイト</div>
-    </a>
-  </li>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/600x600.png" alt="">
-      </div>
-      <div class="finder-content__title">【CELINE】小粋な「DANS PARIS」コレクション</div>
-    </a>
-  </li>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/400x800.png" alt="">
-      </div>
-      <div class="finder-content__title">MAISONdes -メゾン・デ-</div>
-    </a>
-  </li>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
-      </div>
-      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
-    </a>
-  </li>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
-      </div>
-      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
-    </a>
-  </li>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
-      </div>
-      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
-    </a>
-  </li>
-  <li class="finder-content__item">
-    <a href="" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img class="finder-content__thumb-img" src="https://placehold.jp/600x500.png" alt="">
-      </div>
-      <div class="finder-content__title">Vivy -Fluorite Eye’s Song- 感想投稿キャンペーン</div>
+      <div class="finder-content__title" is:raw>{{ item.title }}</div>
     </a>
   </li>
 </ul>

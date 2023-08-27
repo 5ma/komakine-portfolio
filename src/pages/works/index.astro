@@ -10,23 +10,29 @@ import LineSeparator from '@components/LineSeparator.astro';
 
 <Layout title="Works | ">
   <div class="contents l-sp-inner l-pc-inner l-in u-pt-sp-62 u-pt-pc-100 u-mt-pc-23 u-pb-pc-150 u-pb-sp-106">
-    <div class="l-in__header">
-      <ArrowBackLink
-        href='/'
-        text='Back'
-        class='l-in__back'
-      />
-      <CategoryDropdown
-        class='l-in__category u-mt-pc-5'
-      />
-      <TagList
-        class='l-in__tag u-mt-pc-5'
-      />
-    </div>
-    <div class="l-in__content u-pt-sp-45 u-pt-pc-98 u-pb-pc-32">
-      <FinderDetailInfo />
-      <LineSeparator />
-      <FinderContentList />
+    <div id="v-works">
+      <div class="l-in__header">
+        <ArrowBackLink
+          href='/'
+          text='Back'
+          class='l-in__back'
+        />
+        <CategoryDropdown
+          class='l-in__category u-mt-pc-5'
+        />
+        <TagList
+          class='l-in__tag u-mt-pc-5'
+        />
+      </div>
+      <div class="l-in__content u-pt-sp-45 u-pt-pc-98 u-pb-pc-32">
+        <FinderDetailInfo />
+        <LineSeparator />
+        <FinderContentList />
+      </div>
     </div>
   </div>
 </Layout>
+
+<script>
+  import "@scripts/entries/works"
+</script>

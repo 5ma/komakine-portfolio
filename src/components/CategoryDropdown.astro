@@ -6,15 +6,21 @@ interface Props {
 const { class: className } = Astro.props
 ---
 
-<label class:list={["dropdown", className]}>
+<label class:list={["dropdown", className]} v-show="allCategories.length">
   <span class="dropdown__label">Category</span>
   <div class="dropdown__wrapper">
-    <select class="dropdown__select">
+    <select class="dropdown__select" v-model="selectedCategory" data-category-select>
       <optgroup>
-        <option class="dropdown__option" value="all">all</option>
-        <option class="dropdown__option" value="all">music</option>
-        <option class="dropdown__option" value="all">official</option>
-        <option class="dropdown__option" value="all">game</option>
+        <option value="all">all</option>
+        <option
+          v-for="category in allCategories"
+          :key="category"
+          class="dropdown__option"
+          :value="category"
+          is:raw
+        >
+          {{ category }}
+        </option>
       </optgroup>
     </select>
   </div>
