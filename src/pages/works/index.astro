@@ -1,8 +1,6 @@
 ---
 import ArrowBackLink from '@components/ArrowBackLink.astro';
 import CategoryDropdown from '@components/CategoryDropdown.astro';
-import FinderDetailInfo from '@components/FinderDetailInfo.astro';
-import FinderContentList from '@components/FinderContentList.astro';
 import TagList from '@components/TagList.astro';
 import Layout from '@layouts/Layout.astro';
 import LineSeparator from '@components/LineSeparator.astro';
@@ -25,9 +23,17 @@ import LineSeparator from '@components/LineSeparator.astro';
         />
       </div>
       <div class="l-in__content u-pt-sp-45 u-pt-pc-98 u-pb-pc-32">
-        <FinderDetailInfo />
+        <finder-detail-info
+          :site-title="'サイトタイトル'"
+          :devs="getUniqueValues('dev')"
+          :categories="allCategories"
+          :url="'https://www.webcg.net/WEBCG/special/2021/nissan_elgrand/'"
+          :supplement="'補足テキストサンプル改行サンプル'"
+        />
         <LineSeparator />
-        <FinderContentList />
+        <finder-content-list
+          :contents="data"
+        />
       </div>
     </div>
   </div>

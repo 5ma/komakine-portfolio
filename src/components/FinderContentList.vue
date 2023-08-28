@@ -1,34 +1,45 @@
----
-interface Props {
-  class?: string
+<template>
+  <ul class="finder-content" v-if="contents.length">
+    <li
+      class="finder-content__item"
+      v-for="item in contents"
+      :key="item.id"
+    >
+      <a
+        :href="item.url"
+        class="finder-content__link"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="finder-content__thumb">
+          <img
+            class="finder-content__thumb-img"
+            :src="item.img.url"
+            :width="item.img.width"
+            :height="item.img.height"
+            loading="lazy"
+            alt=""
+          >
+        </div>
+        <div class="finder-content__title">{{ item.title }}</div>
+      </a>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  props: {
+    contents: {
+      type: Array,
+      default: () => [],
+      required: true
+    }
+  }
 }
+</script>
 
-const { class: className } = Astro.props
----
-
-<ul class:list={["finder-content", className]} v-show="data.length">
-  <li
-    class="finder-content__item"
-    v-for="item in data"
-    :key="item.id"
-  >
-    <a :href="item.url" class="finder-content__link" target="_blank" rel="noopener">
-      <div class="finder-content__thumb">
-        <img
-          class="finder-content__thumb-img"
-          :src="item.img.url"
-          :width="item.img.width"
-          :height="item.img.height"
-          alt=""
-          loading="lazy"
-        >
-      </div>
-      <div class="finder-content__title" is:raw>{{ item.title }}</div>
-    </a>
-  </li>
-</ul>
-
-<style lang="scss">
+<style lang="scss" scoped>
   @use 'sass:math';
   @use "@styles/global/" as *;
 

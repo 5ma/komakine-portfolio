@@ -1,9 +1,15 @@
 import { createApp } from 'vue/dist/vue.esm-bundler'
-import { client } from './client'
+import { client } from '@scripts/modules/client'
+import FinderContentList from '@components/FinderContentList.vue'
+import FinderDetailInfo from '@components/FinderDetailInfo.vue'
 
 const selectElm = document.querySelector('[data-category-select]')
 
 export const works = createApp({
+  components: {
+    FinderContentList,
+    FinderDetailInfo
+  },
   data() {
     return {
       data: [],
@@ -20,6 +26,7 @@ export const works = createApp({
         endpoint: 'works',
       })
       .then((res) => {
+        console.log(res.contents)
         this.data = res.contents
       })
       .catch((err) => {

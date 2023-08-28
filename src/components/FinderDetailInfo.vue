@@ -1,33 +1,85 @@
----
----
-
+<template>
   <section class="container">
     <h2 class="title">Information</h2>
-    <h3 class="site-title">『牧場物語 Welcome！ワンダフルライフ』公式サイト</h3>
+    <h3 class="site-title">{{ siteTitle }}</h3>
     <dl class="data">
       <div class="data__item">
         <dt class="data__title">Dev</dt>
         <dd class="data__detail">
-          PHP, Scss, JavaScript, Vue.js, jQuery, Swiper
+          {{ joinArrayWithComma(devs) }}
         </dd>
       </div>
       <div class="data__item">
         <dt class="data__title">Category</dt>
         <dd class="data__detail">
-          official, game
+          {{ joinArrayWithComma(categories) }}
         </dd>
       </div>
       <div class="data__item">
         <dt class="data__title">URL</dt>
         <dd class="data__detail">
-          <a href="https://www.bokumono.com/series/welcome/" target="_blank" rel="noopener">https://www.bokumono.com/series/welcome/</a>
+          <a :href="url" target="_blank" rel="noopener">{{ url }}</a>
         </dd>
       </div>
     </dl>
-    <p class="sup">補足テキストが入ります。補足テキストが入ります。補足テキストが入ります。補足テキストが入ります。</p>
+    <p class="sup" v-show="supplement" v-html="formattedText"></p>
   </section>
+</template>
 
-<style lang="scss">
+<script>
+export default {
+  mounted() {
+    console.log('mounted', this.devs)
+  },
+  props: {
+    siteTitle: {
+      type: String,
+      default: '',
+      required: true
+    },
+    devs: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    categories: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    url: {
+      type: String,
+      default: '',
+      required: true
+    },
+    supplement: {
+      type: String,
+      default: '',
+      required: false
+    }
+  },
+  methods: {
+    joinArrayWithComma(arr) {
+      // 配列の全要素をカンマと半角スペースで連結
+      return arr.join(', ')
+    }
+  },
+  computed: {
+    formattedText() {
+      // \n を <br> に変換
+      return this.supplement.replace(/\n/g, '<br>')
+    },
+    displayDevText() {
+      return this.joinArrayWithComma(this.devs)
+    },
+    displayCategoryText() {
+
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
   @use 'sass:math';
   @use "@styles/global/" as *;
 
