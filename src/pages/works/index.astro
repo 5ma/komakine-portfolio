@@ -1,7 +1,5 @@
 ---
 import ArrowBackLink from '@components/ArrowBackLink.astro';
-import CategoryDropdown from '@components/CategoryDropdown.astro';
-import TagList from '@components/TagList.astro';
 import Layout from '@layouts/Layout.astro';
 import LineSeparator from '@components/LineSeparator.astro';
 ---
@@ -15,11 +13,16 @@ import LineSeparator from '@components/LineSeparator.astro';
           text='Back'
           class='l-in__back'
         />
-        <CategoryDropdown
-          class='l-in__category u-mt-pc-5'
+        <category-dropdown
+          class="l-in__category u-mt-pc-5"
+          :categories="allCategories"
+          :selected-category="selectedCategory"
+          @update:value="newValue => selectedCategory = newValue"
         />
-        <TagList
-          class='l-in__tag u-mt-pc-5'
+        <tag-list
+          :tags="tagList"
+          :selected-tags="selectedTags"
+          class="l-in__tag u-mt-pc-5"
         />
       </div>
       <div class="l-in__content u-pt-sp-45 u-pt-pc-98 u-pb-pc-32">

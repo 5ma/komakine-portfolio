@@ -1,32 +1,52 @@
----
-interface Props {
-  class?: string
+<template>
+  <label class="dropdown" v-show="categories.length">
+    <span class="dropdown__label">Category</span>
+    <div class="dropdown__wrapper">
+      <select
+        class="dropdown__select"
+        :value="selectedCategory"
+        @change="updateValue"
+        data-category-select
+      >
+        <optgroup>
+          <option value="all">all</option>
+          <option
+            v-for="category in categories"
+            :key="category"
+            class="dropdown__option"
+            :value="category"
+          >
+            {{ category }}
+          </option>
+        </optgroup>
+      </select>
+    </div>
+  </label>
+</template>
+
+<script>
+export default {
+  props: {
+    categories: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    selectedCategory: {
+      type: String,
+      default: '',
+      required: true
+    }
+  },
+  methods: {
+    updateValue($event) {
+      this.$emit('update:value', $event.target.value);
+    }
+  },
 }
+</script>
 
-const { class: className } = Astro.props
----
-
-<label class:list={["dropdown", className]} v-show="allCategories.length">
-  <span class="dropdown__label">Category</span>
-  <div class="dropdown__wrapper">
-    <select class="dropdown__select" v-model="selectedCategory" data-category-select>
-      <optgroup>
-        <option value="all">all</option>
-        <option
-          v-for="category in allCategories"
-          :key="category"
-          class="dropdown__option"
-          :value="category"
-          is:raw
-        >
-          {{ category }}
-        </option>
-      </optgroup>
-    </select>
-  </div>
-</label>
-
-<style lang="scss">
+<style lang="scss" scoped>
   @use 'sass:math';
   @use "@styles/global/" as *;
 

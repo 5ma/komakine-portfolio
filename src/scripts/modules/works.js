@@ -2,13 +2,17 @@ import { createApp } from 'vue/dist/vue.esm-bundler'
 import { client } from '@scripts/modules/client'
 import FinderContentList from '@components/FinderContentList.vue'
 import FinderDetailInfo from '@components/FinderDetailInfo.vue'
+import TagList from '@components/TagList.vue';
+import CategoryDropdown from '@components/CategoryDropdown.vue';
 
 const selectElm = document.querySelector('[data-category-select]')
 
 export const works = createApp({
   components: {
     FinderContentList,
-    FinderDetailInfo
+    FinderDetailInfo,
+    TagList,
+    CategoryDropdown
   },
   data() {
     return {

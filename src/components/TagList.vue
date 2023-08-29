@@ -1,20 +1,31 @@
----
-interface Props {
-  class?: string
+<template>
+  <ul class="tag-list" v-show="tags.length">
+    <li class="tag-list__item" v-for="tag in tags" :key="tag.displayName">
+      <button type="button" class="tag" :class="{ 'is-active' : selectedTags.includes(tag.value) }">
+        <span class="tag__text">#{{ tag.displayName }}</span>
+      </button>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  props: {
+    tags: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    selectedTags: {
+      type: Array,
+      default: () => [],
+      required: true
+    }
+  }
 }
+</script>
 
-const { class: className } = Astro.props
----
-
-<ul class:list={["tag-list", className]} v-show="tagList.length">
-  <li class="tag-list__item" v-for="tag in tagList" :key="tag.displayName">
-    <button type="button" class="tag" :class="{ 'is-active' : selectedTags.includes(tag.value) }">
-      <span class="tag__text" is:raw>#{{ tag.displayName }}</span>
-    </button>
-  </li>
-</ul>
-
-<style lang="scss">
+<style lang="scss" scoped>
   @use 'sass:math';
   @use "@styles/global/" as *;
 
