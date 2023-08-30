@@ -10,6 +10,7 @@
         class="finder-content__link"
         target="_blank"
         rel="noopener"
+        @mouseenter="updateInfo(item)"
       >
         <div class="finder-content__thumb">
           <img
@@ -25,6 +26,9 @@
       </a>
     </li>
   </ul>
+  <div v-else>
+    一致する項目はありません
+  </div>
 </template>
 
 <script>
@@ -34,6 +38,11 @@ export default {
       type: Array,
       default: () => [],
       required: true
+    }
+  },
+  methods: {
+    updateInfo(item) {
+      this.$emit('onHover', item)
     }
   }
 }

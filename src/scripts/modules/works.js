@@ -18,7 +18,13 @@ export const works = createApp({
     return {
       data: [],
       selectedTags: [], // 選択されているタグ
-      selectedCategory: selectElm ? selectElm.value : 'all' // 選択されているカテゴリー
+      detail: {
+        title: '',
+        dev: [],
+        category: [],
+        url: '',
+        supplement: ''
+      }
     }
   },
   created() {
@@ -32,6 +38,8 @@ export const works = createApp({
       .then((res) => {
         console.log(res.contents)
         this.data = res.contents
+        // 一番最初のデータを詳細に表示しておく
+        this.detail = this.data[0]
       })
       .catch((err) => {
         console.log(err)
@@ -42,6 +50,9 @@ export const works = createApp({
       const values = this.data.flatMap(item => item[propertyName])
       // 重複を除去してユニークな値のみを取得
       return [...new Set(values)]
+    updateDetailInfo(value) {
+      this.detail = value
+    },
     }
   },
   computed: {

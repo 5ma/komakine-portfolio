@@ -1,61 +1,38 @@
 <template>
   <section class="container">
     <h2 class="title">Information</h2>
-    <h3 class="site-title">{{ siteTitle }}</h3>
+    <h3 class="site-title">{{ info.title }}</h3>
     <dl class="data">
-      <div class="data__item">
+      <div class="data__item" v-show="info.dev.length">
         <dt class="data__title">Dev</dt>
         <dd class="data__detail">
-          {{ joinArrayWithComma(devs) }}
+          {{ joinArrayWithComma(info.dev) }}
         </dd>
       </div>
-      <div class="data__item">
+      <div class="data__item" v-show="info.category.length">
         <dt class="data__title">Category</dt>
         <dd class="data__detail">
-          {{ joinArrayWithComma(categories) }}
+          {{ joinArrayWithComma(info.category) }}
         </dd>
       </div>
-      <div class="data__item">
+      <div class="data__item" v-show="info.url">
         <dt class="data__title">URL</dt>
         <dd class="data__detail">
-          <a :href="url" target="_blank" rel="noopener">{{ url }}</a>
+          <a :href="info.url" target="_blank" rel="noopener">{{ info.url }}</a>
         </dd>
       </div>
     </dl>
-    <p class="sup" v-show="supplement" v-html="formattedText"></p>
+    <p class="sup" v-if="info.supplement" v-html="formattedText"></p>
   </section>
 </template>
 
 <script>
 export default {
-  mounted() {
-    console.log('mounted', this.devs)
-  },
   props: {
-    siteTitle: {
-      type: String,
-      default: '',
+    info: {
+      type: Object,
+      default: () => {},
       required: true
-    },
-    devs: {
-      type: Array,
-      default: () => [],
-      required: true
-    },
-    categories: {
-      type: Array,
-      default: () => [],
-      required: true
-    },
-    url: {
-      type: String,
-      default: '',
-      required: true
-    },
-    supplement: {
-      type: String,
-      default: '',
-      required: false
     }
   },
   methods: {
@@ -67,13 +44,7 @@ export default {
   computed: {
     formattedText() {
       // \n を <br> に変換
-      return this.supplement.replace(/\n/g, '<br>')
-    },
-    displayDevText() {
-      return this.joinArrayWithComma(this.devs)
-    },
-    displayCategoryText() {
-
+      return this.info.supplement.replace(/\n/g, '<br>')
     }
   }
 }
