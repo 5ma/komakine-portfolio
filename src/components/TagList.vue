@@ -1,7 +1,11 @@
 <template>
   <ul class="tag-list" v-show="tags.length">
     <li class="tag-list__item" v-for="tag in tags" :key="tag.displayName">
-      <button type="button" class="tag" :class="{ 'is-active' : selectedTags.includes(tag.value) }">
+      <button
+        type="button"
+        class="tag"
+        @click="updateValue(tag.value)"
+        :class="{ 'is-active' : selectedTags.includes(tag.value) }">
         <span class="tag__text">#{{ tag.displayName }}</span>
       </button>
     </li>
@@ -20,6 +24,11 @@ export default {
       type: Array,
       default: () => [],
       required: true
+    }
+  },
+  methods: {
+    updateValue(value) {
+      this.$emit('onClick', value)
     }
   }
 }
@@ -55,6 +64,13 @@ export default {
 
     @include pc {
       font-size: px-to-rem(18);
+    }
+
+    @include hover {
+      &:hover,
+      &:focus-visible {
+        color: var(--color-theme-current);
+      }
     }
 
     &.is-active {
