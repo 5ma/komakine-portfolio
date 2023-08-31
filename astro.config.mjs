@@ -9,7 +9,7 @@ export default defineConfig({
     host: true
   },
   build: {
-    inlineStylesheets: `never`,
+    inlineStylesheets: `always`,
   },
   vite: {
     build: {
