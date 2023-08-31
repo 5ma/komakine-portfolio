@@ -1,9 +1,7 @@
 import { toggleViewMode } from "@scripts/modules/toggleViewMode"
 
 const TOP = {
-  init() {
+  enter() {
     toggleViewMode()
   }
 }
-
-TOP.init()

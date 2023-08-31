@@ -10,7 +10,7 @@ interface Props {
 const { href, text, class: className } = Astro.props
 ---
 
-<a href={href} class:list={["link", className]}>
+<a href={href} class:list={["link", "link-pjax", className]}>
   <div class="arrow">
     <IconArrow />
   </div>

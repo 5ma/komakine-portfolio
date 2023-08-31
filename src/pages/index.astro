@@ -7,62 +7,64 @@ import FinderModal from '@components/FinderModal.vue';
 ---
 
 <Layout>
-	<div class="contents l-sp-inner l-pc-inner u-pt-sp-80 u-pb-sp-82 u-pt-pc-100">
-		<div class="view-changer">
-			<ViewModeChanger />
-		</div>
-		<ul class="finder u-mt-sp-17">
-			<li class="finder__item">
-				<FinderItemFolder
-					title="Works"
-					date='2023.08.30'
-					href='/works/'
-					type='folder'
+	<div data-barba="container" data-barba-namespace="top">
+		<div class="contents l-sp-inner l-pc-inner u-pt-sp-80 u-pb-sp-82 u-pt-pc-100">
+			<div class="view-changer">
+				<ViewModeChanger />
+			</div>
+			<ul class="finder u-mt-sp-17">
+				<li class="finder__item">
+					<FinderItemFolder
+						title="Works"
+						date='2023.08.30'
+						href='/works/'
+						type='folder'
+						/>
+					</li>
+					<li class="finder__item">
+						<FinderItemFolder
+							title="Skills"
+							date='2023.08.30'
+							href='/skills/'
+							type='folder'
+						/>
+					</li>
+				<li class="finder__item">
+					<FinderItemFile
+						title="About.txt"
+						date='2023.08.30'
+						type="text"
+					/>
+				</li>
+				<li class="finder__item">
+					<FinderItemFile
+						title="CV.txt"
+						date='2023.08.30'
+						type="text"
+					/>
+				</li>
+				<li class="finder__item">
+					<FinderItemFile
+						title="resume.json"
+						date='2023.08.30'
+						type="json"
 					/>
 				</li>
 				<li class="finder__item">
 					<FinderItemFolder
-						title="Skills"
+						title="iTunes Playlist"
 						date='2023.08.30'
-						href='/skills/'
-						type='folder'
+						type='playlist'
 					/>
 				</li>
-			<li class="finder__item">
-				<FinderItemFile
-					title="About.txt"
-					date='2023.08.30'
-					type="text"
-				/>
-			</li>
-			<li class="finder__item">
-				<FinderItemFile
-					title="CV.txt"
-					date='2023.08.30'
-					type="text"
-				/>
-			</li>
-			<li class="finder__item">
-				<FinderItemFile
-					title="resume.json"
-					date='2023.08.30'
-					type="json"
-				/>
-			</li>
-			<li class="finder__item">
-				<FinderItemFolder
-					title="iTunes Playlist"
-					date='2023.08.30'
-					type='playlist'
-				/>
-			</li>
-		</ul>
+			</ul>
+		</div>
+		<FinderModal />
 	</div>
-	<FinderModal />
 </Layout>
 
 <script>
-  import "@scripts/entries/top"
+  // import "@scripts/page/top"
 </script>
 
 <style lang="scss">
