@@ -2,8 +2,8 @@ import { createApp } from 'vue/dist/vue.esm-bundler'
 import { client } from '@scripts/modules/client'
 import FinderContentList from '@components/FinderContentList.vue'
 import FinderDetailInfo from '@components/FinderDetailInfo.vue'
-import TagList from '@components/TagList.vue';
-import CategoryDropdown from '@components/CategoryDropdown.vue';
+import TagList from '@components/TagList.vue'
+import CategoryDropdown from '@components/CategoryDropdown.vue'
 
 export const createWorksApp = () => {
   let url = new URL(location.href)

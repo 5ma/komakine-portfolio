@@ -9,8 +9,6 @@ export const WORKS = {
     }
   },
   leave() {
-    console.log('this.instance', this.instance)
-    this.instance.unmount()
-    console.log('works destroy')
+    if (this.instance) this.instance.unmount()
   }
 }
