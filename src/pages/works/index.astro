@@ -29,6 +29,7 @@ import LineSeparator from '@components/LineSeparator.astro';
       <div class="l-in__content u-pt-sp-45 u-pt-pc-98 u-pb-pc-32">
         <finder-detail-info
           :info="detail"
+          :is-no-data="filteredArray.length === 0"
         />
         <LineSeparator />
         <finder-content-list

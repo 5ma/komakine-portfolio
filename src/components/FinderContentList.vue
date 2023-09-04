@@ -27,7 +27,7 @@
         </a>
       </li>
     </TransitionGroup>
-    <div v-show="!contents.length">
+    <div class="no-data" v-show="!contents.length">
       一致する項目はありません
     </div>
   </div>
@@ -65,6 +65,12 @@ export default {
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
 
+    &__item {
+      @include pc {
+        max-width: 500px;
+      }
+    }
+
     &__link {
       position: relative;
       display: block;
@@ -80,10 +86,6 @@ export default {
       margin: 4px;
       aspect-ratio: 1 / 1;
       z-index: 1;
-
-      @include pc {
-        margin: 5px;
-      }
 
       &-img {
         position: absolute;
@@ -101,7 +103,7 @@ export default {
         box-sizing: border-box;
 
         @include pc {
-          box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 5px var(--color-white);
+          box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 4px var(--color-white);
         }
       }
     }
@@ -118,6 +120,15 @@ export default {
         margin-top: 18px;
         font-size: px-to-rem(16);
       }
+    }
+  }
+
+  .no-data {
+    @include font-ja;
+    font-size: px-to-rem(14);
+
+    @include pc {
+      display: none;
     }
   }
 </style>

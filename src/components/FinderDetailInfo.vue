@@ -1,28 +1,33 @@
 <template>
   <section class="container">
     <h2 class="title">Information</h2>
-    <h3 class="site-title">{{ info.title }}</h3>
-    <dl class="data">
-      <div class="data__item" v-show="info.dev.length">
-        <dt class="data__title">Dev</dt>
-        <dd class="data__detail">
-          {{ joinArrayWithComma(info.dev) }}
-        </dd>
-      </div>
-      <div class="data__item" v-show="info.category.length">
-        <dt class="data__title">Category</dt>
-        <dd class="data__detail">
-          {{ joinArrayWithComma(info.category) }}
-        </dd>
-      </div>
-      <div class="data__item" v-show="info.url">
-        <dt class="data__title">URL</dt>
-        <dd class="data__detail">
-          <a :href="info.url" target="_blank" rel="noopener">{{ info.url }}</a>
-        </dd>
-      </div>
-    </dl>
-    <p class="sup" v-if="info.supplement" v-html="formattedText"></p>
+    <template v-if="!isNoData">
+      <h3 class="site-title">{{ info.title }}</h3>
+      <dl class="data">
+        <div class="data__item" v-show="info.dev.length">
+          <dt class="data__title">Dev</dt>
+          <dd class="data__detail">
+            {{ joinArrayWithComma(info.dev) }}
+          </dd>
+        </div>
+        <div class="data__item" v-show="info.category.length">
+          <dt class="data__title">Category</dt>
+          <dd class="data__detail">
+            {{ joinArrayWithComma(info.category) }}
+          </dd>
+        </div>
+        <div class="data__item" v-show="info.url">
+          <dt class="data__title">URL</dt>
+          <dd class="data__detail">
+            <a :href="info.url" target="_blank" rel="noopener">{{ info.url }}</a>
+          </dd>
+        </div>
+      </dl>
+      <p class="sup" v-if="info.supplement" v-html="formattedText"></p>
+    </template>
+    <template v-else>
+      <div class="no-data">一致する項目はありません。</div>
+    </template>
   </section>
 </template>
 
@@ -32,6 +37,11 @@ export default {
     info: {
       type: Object,
       default: () => ({}),
+      required: true
+    },
+    isNoData: {
+      type: Boolean,
+      default: false,
       required: true
     }
   },
@@ -63,9 +73,6 @@ export default {
 
     @include pc {
       display: block;
-      @include hover {
-      }
-
     }
   }
 
@@ -118,5 +125,10 @@ export default {
     @include font-ja;
     line-height: math.div(28, 16);
     letter-spacing: 0.01em;
+  }
+
+  .no-data {
+    margin-top: 36px;
+    @include font-ja;
   }
 </style>
