@@ -87,6 +87,10 @@ export default {
       aspect-ratio: 1 / 1;
       z-index: 1;
 
+      @include pc {
+        margin: 5px;
+      }
+
       &-img {
         position: absolute;
         top: 0;
@@ -99,11 +103,11 @@ export default {
         max-width: 100%;
         max-height: 100%;
         margin: auto;
-        box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 4px var(--color-white);
+        box-shadow: 0 0 0 1px #272727, 0 0 0 4px var(--color-gray-border);
         box-sizing: border-box;
 
         @include pc {
-          box-shadow: 0 0 0 1px var(--color-gray-border), 0 0 0 4px var(--color-white);
+          box-shadow: 0 0 0 1px #272727, 0 0 0 5px var(--color-gray-border);
         }
       }
     }
