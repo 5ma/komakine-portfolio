@@ -10,10 +10,11 @@ interface Props {
 }
 
 const { title, date, type, href } = Astro.props;
+const isTargetBlack = href && href.includes('http')
 ---
 
 {type === 'json' ? (
-  <a href={href} class="wrapper">
+  <a href={href} class="wrapper" target={isTargetBlack ? '_blank' : '_self'}>
     <div class="icon">
       <IconJson label='jsonファイルのアイコン' />
     </div>
@@ -22,13 +23,18 @@ const { title, date, type, href } = Astro.props;
     <div class="action">View</div>
   </a>
 ) : (
-  <button type="button" class="wrapper">
+  <button type="button" class="wrapper" data-modal-open="text">
     <div class="icon">
       <IconTxt label='テキストファイルのアイコン' />
     </div>
-    <div class="title">{title}</div>
+    <div class="title" data-modal-title>{title}</div>
     <div class="date">{date}</div>
     <div class="action">Read</div>
+    <template>
+      <div class="text">
+        <slot />
+      </div>
+    </template>
   </button>
 )}
 

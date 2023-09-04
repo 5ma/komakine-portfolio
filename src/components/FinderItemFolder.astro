@@ -22,11 +22,11 @@ const { title, date, type, href } = Astro.props;
     <div class="action">View</div>
   </a>
 ) : (
-  <button class="wrapper" type="button">
+  <button class="wrapper" type="button" data-modal-open="playlist">
     <div class="icon">
       <IconPlaylist label='iTunesアイコン' />
     </div>
-    <div class="title">{title}</div>
+    <div class="title" data-modal-title>{title}</div>
     <div class="date">{date}</div>
     <div class="action">View</div>
   </button>

@@ -1,6 +1,7 @@
 @use "@styles/global/" as *;
 
-:root {
+:root,
+::backdrop {
   --font-zenkaku: YakuHanJPs, 'Zen Kaku Gothic New', 'Inter Variable', sans-serif;
   --font-inter: 'Inter Variable', 'Zen Kaku Gothic New', sans-serif;
 

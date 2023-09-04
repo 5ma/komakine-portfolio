@@ -3,7 +3,6 @@ import FinderItemFolder from '@components/FinderItemFolder.astro';
 import FinderItemFile from '@components/FinderItemFile.astro';
 import Layout from '@layouts/Layout.astro';
 import ViewModeChanger from '@components/ViewModeChanger.astro';
-import FinderModal from '@components/FinderModal.vue';
 ---
 
 <Layout>
@@ -34,20 +33,79 @@ import FinderModal from '@components/FinderModal.vue';
 						title="About.txt"
 						date='2023.08.30'
 						type="text"
-					/>
+					>
+						自己紹介テキストが入ります。
+					</FinderItemFile>
 				</li>
 				<li class="finder__item">
 					<FinderItemFile
 						title="CV.txt"
 						date='2023.08.30'
 						type="text"
-					/>
+					>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						CV.txtの詳細テキストが入ります<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+					</FinderItemFile>
 				</li>
 				<li class="finder__item">
 					<FinderItemFile
 						title="resume.json"
 						date='2023.08.30'
 						type="json"
+						href='https://github.com/5ma/komakine-portfolio/blob/main/public/assets/json/resume.json'
 					/>
 				</li>
 				<li class="finder__item">
@@ -59,13 +117,11 @@ import FinderModal from '@components/FinderModal.vue';
 				</li>
 			</ul>
 		</div>
-		<FinderModal />
+		<div id="v-modal">
+			<finder-modal />
+		</div>
 	</div>
 </Layout>
-
-<script>
-  // import "@scripts/page/top"
-</script>
 
 <style lang="scss">
 	@use 'sass:math';

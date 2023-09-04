@@ -1,57 +1,93 @@
 <template>
-  <dialog class="dialog" data-type="txt">
+  <dialog
+    class="dialog"
+    id="finder-modal"
+    :data-type="type"
+    ref="dialog"
+    aria-labelledby="dialog-title"
+  >
     <div class="dialog__header">
-      <button type="button" class="dialog__close"></button>
-      <h1 class="dialog__title">CV.txt</h1>
+      <button
+        type="button"
+        class="dialog__close"
+        aria-label="モーダルを閉じる"
+        @click="close"
+        :aria-expanded="String(isOpen)"
+        aria-controls="finder-modal"
+      >
+      </button>
+      <h1 id="dialog-title" class="dialog__title">{{ title }}</h1>
     </div>
     <div class="dialog__content">
-      <!-- <div class="dialog__text">
-        ⬛■勤務先企業名<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-        株式会社Relic<br>
-        テキスト<br>
-        テキスト<br>
-      </div> -->
-      <div class="dialog__playlist">
-        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/weekly-playlist/pl.u-NepSLlomm1"></iframe>
+      <div class="dialog__text" v-show="type === 'text'" v-html="textContents">
+      </div>
+      <div class="dialog__playlist" v-show="type === 'playlist'">
+        <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;border-radius:0;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/weekly-playlist/pl.u-NepSLlomm1"></iframe>
       </div>
     </div>
   </dialog>
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      isOpen: false, // モーダルの開閉状態
+      type: 'text',  // 'text' | 'playlist'
+      title: '',     // モーダルのタイトル
+      textContents: '',  // typeが 'text' だった場合に表示するコンテンツ部分
+    }
+  },
+  mounted() {
+    // data-modal-openをクリックでモーダルを開く
+    const modalShowButtons = document.querySelectorAll('[data-modal-open]')
+    modalShowButtons.forEach((showButton) => {
+      showButton.addEventListener('click', ({ currentTarget }) => {
+        const type = currentTarget.dataset.modalOpen
+        const title = currentTarget.querySelector('[data-modal-title]')?.textContent
+        const templateContent = currentTarget.querySelector('template')?.content ?? null
+        const textContents = templateContent?.querySelector('.text')?.innerHTML
+
+        const modalData = {
+          type,
+          title,
+          textContents
+        }
+
+        this.setModalData(modalData)
+        this.show()
+      })
+    })
+
+    // 背景のオーバーレイをクリックでモーダルを閉じる
+    this.$refs.dialog.addEventListener('click', (e) => {
+      if (e.target === this.$refs.dialog) {
+        this.close()
+      }
+    })
+
+    // モーダルが閉じられた時、isOpenをfalseに
+    this.$refs.dialog.addEventListener('close', () => {
+      this.isOpen = false
+    })
+  },
+  methods: {
+    setModalData(data) {
+      const { type, title, textContents } = data
+
+      this.type = type
+      this.title = title
+      this.textContents = textContents
+    },
+    show() {
+      this.isOpen = true
+      this.$refs.dialog.showModal()
+    },
+    close() {
+      this.$refs.dialog.close()
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -69,10 +105,14 @@
     border: 0;
     border-radius: 6px;
     box-sizing: border-box;
-    box-shadow: 0 0 8px 0 rgb(var(--color-black-rgb) / 0.2);
+    box-shadow: 0 0 8px 0 rgb(var(--color-black-rgb) / 0.5);
 
     @include pc {
       border-radius: 10px;
+    }
+
+    &::backdrop {
+      cursor: pointer;
     }
 
     &__header {
@@ -150,6 +190,7 @@
       @include pc {
         font-size: px-to-rem(16);
         min-height: min(45svh, 450px);
+        max-height: 70svh;
       }
     }
 
