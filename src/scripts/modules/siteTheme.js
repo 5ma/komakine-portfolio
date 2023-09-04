@@ -6,7 +6,7 @@ const circleElem = document.querySelector('[data-color-change="circle"]')
 export const siteTheme = {
   animeInstance: undefined,
   currentIndex: 0,
-  colorChangeInterval: 1000 * 15, // 15秒ごとに色を変更
+  colorChangeInterval: 1000 * 10, // 10秒ごとに色を変更
   colors: [
     'white',
     'pink',
@@ -31,6 +31,7 @@ export const siteTheme = {
         this.isResetting = true
         circleButtonElm.classList.add('is-reset')
         this.currentIndex = (this.currentIndex + 1) % this.colors.length
+        this.changeColor(this.currentIndex)
       }
     })
   },
