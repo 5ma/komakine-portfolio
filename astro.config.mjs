@@ -29,7 +29,6 @@ export default defineConfig({
             if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
               extType = 'image';
             }
-            console.log(extType)
             //ビルド時のCSS名を明記してコントロールする
             if(extType === 'css') {
               return `assets/css/style.css`;

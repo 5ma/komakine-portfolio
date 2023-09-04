@@ -42,7 +42,7 @@ export const createWorksApp = () => {
           endpoint: 'works',
         })
         .then((res) => {
-          console.log(res.contents)
+          import.meta.env.DEV && console.log(res.contents)
           this.data = res.contents
           // 一番最初のデータを詳細に表示しておく
           this.detail = this.data[0]
