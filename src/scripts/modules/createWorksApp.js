@@ -120,6 +120,11 @@ export const createWorksApp = () => {
         }
 
         this.updateUrl(url.toString())
+      },
+      filteredArray() {
+        if (!this.filteredArray.length) return
+        // 詳細の情報をupdate
+        this.updateDetailInfo(this.filteredArray[0])
       }
     },
     computed: {
