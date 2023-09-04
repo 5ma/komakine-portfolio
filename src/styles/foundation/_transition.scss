@@ -1,0 +1,17 @@
+.list-move, /* 移動する要素にトランジションを適用 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  translate: -20px 0;
+}
+
+/* leave する項目をレイアウトフローから外すことで
+   アニメーションが正しく計算されるようになる */
+.list-leave-active {
+  position: absolute;
+}

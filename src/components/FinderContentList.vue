@@ -1,33 +1,35 @@
 <template>
-  <ul class="finder-content" v-if="contents.length">
-    <li
-      class="finder-content__item"
-      v-for="item in contents"
-      :key="item.id"
-    >
-      <a
-        :href="item.url"
-        class="finder-content__link"
-        target="_blank"
-        rel="noopener"
-        @mouseenter="updateInfo(item)"
+  <div>
+    <TransitionGroup name="list" tag="ul" class="finder-content">
+      <li
+        class="finder-content__item"
+        v-for="item in contents"
+        :key="item.id"
       >
-        <div class="finder-content__thumb">
-          <img
-            class="finder-content__thumb-img"
-            :src="item.img.url"
-            :width="item.img.width"
-            :height="item.img.height"
-            loading="lazy"
-            alt=""
-          >
-        </div>
-        <div class="finder-content__title">{{ item.title }}</div>
-      </a>
-    </li>
-  </ul>
-  <div v-else>
-    一致する項目はありません
+        <a
+          :href="item.url"
+          class="finder-content__link"
+          target="_blank"
+          rel="noopener"
+          @mouseenter="updateInfo(item)"
+        >
+          <div class="finder-content__thumb">
+            <img
+              class="finder-content__thumb-img"
+              :src="item.img.url"
+              :width="item.img.width"
+              :height="item.img.height"
+              loading="lazy"
+              alt=""
+            >
+          </div>
+          <div class="finder-content__title">{{ item.title }}</div>
+        </a>
+      </li>
+    </TransitionGroup>
+    <div v-show="!contents.length">
+      一致する項目はありません
+    </div>
   </div>
 </template>
 
@@ -53,6 +55,7 @@ export default {
   @use "@styles/global/" as *;
 
   .finder-content {
+    position: relative;
     display: grid;
     gap: 35px percentage(math.div(20, 335));
     grid-template-columns: 1fr 1fr;
