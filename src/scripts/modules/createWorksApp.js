@@ -33,9 +33,6 @@ export const createWorksApp = () => {
       this.getData()
       this.setTagFilterFromQuery()
     },
-    unmounted() {
-      import.meta.env.DEV && console.log('works unmounted')
-    },
     methods: {
       getData() {
         client.get({
