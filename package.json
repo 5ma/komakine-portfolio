@@ -21,6 +21,8 @@
     "autoprefixer": "^10.4.15",
     "microcms-js-sdk": "^2.5.0",
     "sass": "^1.65.1",
+    "shuffle-letters": "^1.1.0",
+    "typed.js": "^2.0.16",
     "vue": "^3.3.4"
   },
   "volta": {

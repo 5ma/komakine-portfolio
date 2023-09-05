@@ -1,7 +1,8 @@
 import barba from '@barba/core'
 import barbaPrefetch from '@barba/prefetch';
 import { setUpJs } from '@scripts/modules/setUpJs';
-import { container } from './dom';
+import { container } from '@scripts/modules/dom';
+import { transitionOnEnter, transitionOnLeave } from '@scripts/modules/pageTransitions';
 
 export const pjax = () => {
   // tell Barba to use the prefetch plugin
@@ -26,6 +27,7 @@ export const pjax = () => {
           import.meta.env.DEV && console.log('pjax enter', data)
           setUpJs.set(data.next.namespace)
           container.classList.add('is-enter')
+          transitionOnEnter()
         },
         afterEnter(data) {
           import.meta.env.DEV && console.log('pjax after enter', data)
@@ -36,6 +38,7 @@ export const pjax = () => {
           import.meta.env.DEV && console.log('pjax leave', data)
           setUpJs.reset(data.current.namespace)
           container.classList.add('is-leave')
+          transitionOnLeave()
 
           return new Promise(function (resolve) {
             setTimeout(() => {
