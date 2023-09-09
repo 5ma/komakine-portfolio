@@ -13,16 +13,16 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
   </div>
   <dl class="network">
     <div class="network__item">
-      <dt class="network__title">Request URL</dt>
-      <dd class="network__description">https://komakine-portfolio.vercel.app/</dd>
+      <dt class="network__title" data-typed-output="network-title"></dt>
+      <dd class="network__description"  data-typed-output="network-desc"></dd>
     </div>
     <div class="network__item">
-      <dt class="network__title">Request Method</dt>
-      <dd class="network__description">GET</dd>
+      <dt class="network__title" data-typed-output="network-title"></dt>
+      <dd class="network__description"  data-typed-output="network-desc"></dd>
     </div>
     <div class="network__item">
-      <dt class="network__title">Status Code</dt>
-      <dd class="network__description">200 OK</dd>
+      <dt class="network__title" data-typed-output="network-title"></dt>
+      <dd class="network__description"  data-typed-output="network-desc"></dd>
     </div>
   </dl>
   <div class="color-change">
@@ -48,10 +48,15 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
     @include fz-vw(65, 375, $breakpointSp, 375 * $font_shrink_sp);
     line-height: 1;
     letter-spacing: -0.03em;
-    min-height: 2em;
+
+    :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
+      @include fz-vw(13, 375, $breakpointSp, 375 * $font_shrink_sp);
+    }
 
     @include max-w(370) {
-      @include fz-vw(61, 370, $breakpointSp, 280);
+      :global([data-page="top"]) & {
+        @include fz-vw(61, 370, $breakpointSp, 280);
+      }
     }
 
     @include pc {
@@ -59,6 +64,10 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
       line-height: 0.95;
       min-height: 0.95em * 2;
       letter-spacing: -0.01em;
+
+      :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
+        @include fz-vw(26, 1400, 1400 * $font_flex_pc, $breakpointPc);
+      }
     }
 
     :global(.typed-cursor) {
@@ -73,25 +82,54 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
   }
 
   .title {
+    position: relative;
     text-transform: uppercase;
+    width: fit-content;
+    min-height: 1em;
+
+    &::after {
+      position: absolute;
+      left: calc(100% + 0.07em);
+      bottom: 0.1em;
+      display: none;
+      width: 0.7em;
+      height: 0.08em;
+      background-color: var(--color-theme-current);
+      content: '';
+    }
+    :global(.is-leave) & {
+      &::after {
+        display: block;
+      }
+    }
   }
 
   .data {
+    position: relative;
+    width: fit-content;
     margin-top: 13px;
     @include fz-vw(19, 375, $breakpointSp, 375 * $font_shrink_sp);
     line-height: 1.3;
     letter-spacing: -0.01em;
+    min-height: 1.3em;
+
+    :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
+      @include fz-vw(31, 375, $breakpointSp, 375 * $font_shrink_sp);
+    }
 
     @include pc {
       margin-top: 17px;
       @include fz-vw(52, 1400, 1400 * $font_flex_pc, $breakpointPc);
+
+      :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
+        @include fz-vw(100, 1400, 1400 * $font_flex_pc, $breakpointPc);
+      }
     }
 
-    &::before {
-      content: '{';
-    }
-    &::after {
-      content: '}';
+    &.is-typed-complete {
+      :global(.typed-cursor) {
+        display: none;
+      }
     }
   }
 
@@ -110,10 +148,10 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
       display: flex;
       flex-wrap: wrap;
       gap: 0.5em;
+      min-height: 1.3em;
 
       & + & {
         @include pc {
-
           margin-top: 0.3em;
         }
       }

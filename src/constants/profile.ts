@@ -1,4 +1,4 @@
-export const profileData = [
+const profileTextData = [
   "job : 'Frontend Developer'",
   "birthday : '1996-02-28'",
   "age : '27'",
@@ -7,3 +7,7 @@ export const profileData = [
   "weight : '??? apples'",
   "area : 'Kanagawa'",
 ]
+
+export const profileData = profileTextData.map((text) => {
+  return `{ ${text} }`
+})
