@@ -1,5 +1,6 @@
 ---
 import ColorChangerCircle from "@components/ColorChangerCircle.astro";
+import ProfileDataType from "@components/profileDataType.astro";
 ---
 
 <header class="header l-sp-inner l-pc-inner">
@@ -10,6 +11,9 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
   </div>
   <div class="data">
     <span data-typed-output="json"></span>
+    <div class="data__type">
+      <ProfileDataType />
+    </div>
   </div>
   <dl class="network">
     <div class="network__item">
@@ -129,6 +133,29 @@ import ColorChangerCircle from "@components/ColorChangerCircle.astro";
     &.is-typed-complete {
       :global(.typed-cursor) {
         display: none;
+      }
+    }
+
+    &__type {
+      position: absolute;
+      top: 1.4em;
+      left: 10px;
+      opacity: 0;
+      visibility: hidden;
+
+      :global(.container:not([data-page="top"])) & {
+        display: none;
+      }
+
+      @include hover {
+        top: auto;
+        left: 8em;
+        bottom: 1.5em;
+
+        #{$_this}:hover & {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
   }
