@@ -52,6 +52,7 @@ import ProfileDataType from "@components/profileDataType.astro";
     @include fz-vw(65, 375, $breakpointSp, 375 * $font_shrink_sp);
     line-height: 1;
     letter-spacing: -0.03em;
+    transition: font-size .4s var(--ease-out3);
 
     :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
       @include fz-vw(13, 375, $breakpointSp, 375 * $font_shrink_sp);
@@ -96,12 +97,12 @@ import ProfileDataType from "@components/profileDataType.astro";
       left: calc(100% + 0.07em);
       bottom: 0.1em;
       display: none;
-      width: 0.7em;
+      width: 0.65em;
       height: 0.08em;
       background-color: var(--color-theme-current);
       content: '';
     }
-    :global(.is-leave) & {
+    :global(.barba-leave-active) & {
       &::after {
         display: block;
       }
@@ -109,13 +110,14 @@ import ProfileDataType from "@components/profileDataType.astro";
   }
 
   .data {
+    $_this: &;
     position: relative;
-    width: fit-content;
     margin-top: 13px;
     @include fz-vw(19, 375, $breakpointSp, 375 * $font_shrink_sp);
     line-height: 1.3;
     letter-spacing: -0.01em;
     min-height: 1.3em;
+    transition: font-size .4s var(--ease-out3);
 
     :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
       @include fz-vw(31, 375, $breakpointSp, 375 * $font_shrink_sp);

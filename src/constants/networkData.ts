@@ -1,7 +1,9 @@
+import { getBaseUrl } from "@scripts/modules/url";
+
 export const networkData = [
   {
     title: 'Request URL',
-    desc: location.href
+    desc: () => getBaseUrl()
   },
   {
     title: 'Request Method',

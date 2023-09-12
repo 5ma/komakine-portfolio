@@ -4,7 +4,7 @@ import { setUpJs } from '@scripts/modules/setUpJs';
 import { container } from '@scripts/modules/dom';
 import { LEAVE_DURATION, transitionOnEnter, transitionOnLeave } from '@scripts/modules/pageTransitions';
 
-export const pjax = () => {
+export const setPjax = () => {
   // tell Barba to use the prefetch plugin
   barba.use(barbaPrefetch)
 
@@ -25,32 +25,34 @@ export const pjax = () => {
         name: 'transition',
         enter({ next }) {
           import.meta.env.DEV && console.log('pjax enter')
-          // const { current, next } = data
           const nextPage = next.namespace
           container.setAttribute('data-page', nextPage)
-          container.classList.add('is-enter')
+          container.classList.add('barba-enter')
 
           setUpJs.set(nextPage)
           transitionOnEnter(nextPage)
         },
-        afterEnter(data) {
-          import.meta.env.DEV && console.log('pjax after enter', data)
-          container.classList.add('is-after-enter')
-          container.classList.remove('is-leave', 'is-enter')
+        afterEnter() {
+          import.meta.env.DEV && console.log('pjax after enter')
+          container.classList.add('barba-after-enter')
+          container.classList.remove('barba-leave-active', 'is-enter')
         },
-        leave(data) {
-          import.meta.env.DEV && console.log('pjax leave', data)
-          setUpJs.reset(data.current.namespace)
-          container.classList.add('is-leave')
+        leave() {
+          import.meta.env.DEV && console.log('pjax leave')
+          container.classList.add('barba-leave-active')
           transitionOnLeave()
 
-          return new Promise(function (resolve) {
+          return new Promise((resolve) => {
             setTimeout(() => {
               resolve()
               // 50msバッファを持たせて遷移する
             }, LEAVE_DURATION * 1000 + 50)
           });
         },
+        afterLeave({ current }) {
+          import.meta.env.DEV && console.log('pjax afterLeave')
+          setUpJs.reset(current.namespace)
+        }
       }
     ],
   })
