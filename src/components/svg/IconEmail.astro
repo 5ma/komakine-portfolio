@@ -9,3 +9,9 @@ const { label } = Astro.props;
 <svg viewBox="0 0 48 48" role="img" aria-label={label}>
   <use href="/assets/image/symbol/icon_mail.svg#icon-mail"></use>
 </svg>
+
+<style lang="scss">
+  svg {
+    transition: stroke cubic-bezier(0.83, 0, 0.17, 1) 1s;
+  }
+</style>

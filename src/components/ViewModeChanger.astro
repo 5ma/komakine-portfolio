@@ -27,16 +27,28 @@
 
   .button {
     position: relative;
+    display: grid;
+    align-items: center;
     width: fit-content;
     height: auto;
-    padding: 2px 0;
+    padding: 2px 8px;
     margin: 0;
     background: none;
     border: 0;
+    border-radius: 4px;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     &:not(:disabled),
     &:not([aria-disabled="true"]) {
       cursor: pointer;
+    }
+
+    @include hover {
+      transition: background-color .1s, color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+
+      &:hover {
+        background: rgb(var(--color-selection-blue-rgb) / 0.5);
+      }
     }
   }
 
@@ -88,11 +100,15 @@
 
       &-cube {
         background-color: var(--color-theme-current);
+        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
       }
 
       &-bar {
+        position: relative;
+        top: -2px;
         height: 1px;
         background-color: var(--color-theme-current);
+        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
       }
     }
   }

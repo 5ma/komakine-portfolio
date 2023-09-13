@@ -9,9 +9,9 @@ import ProfileDataType from "@components/profileDataType.astro";
     <div class="title" aria-hidden="true" data-typed-output="title"></div>
     <div class="title" aria-hidden="true" data-typed-output="title"></div>
   </div>
-  <div class="data">
+  <div class="data" data-type="trigger" data-type-target="js-profile-type">
     <span data-typed-output="json"></span>
-    <div class="data__type">
+    <div class="data__type" id="js-profile-type">
       <ProfileDataType />
     </div>
   </div>
@@ -53,6 +53,7 @@ import ProfileDataType from "@components/profileDataType.astro";
     line-height: 1;
     letter-spacing: -0.03em;
     transition: font-size .4s var(--ease-out3);
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
       @include fz-vw(13, 375, $breakpointSp, 375 * $font_shrink_sp);
@@ -117,7 +118,8 @@ import ProfileDataType from "@components/profileDataType.astro";
     line-height: 1.3;
     letter-spacing: -0.01em;
     min-height: 1.3em;
-    transition: font-size .4s var(--ease-out3);
+    transition: font-size .4s var(--ease-out3), color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+    cursor: text;
 
     :global(.container:not([data-page="top"])) & { // TOPページ以外のスタイル
       @include fz-vw(31, 375, $breakpointSp, 375 * $font_shrink_sp);
@@ -149,6 +151,13 @@ import ProfileDataType from "@components/profileDataType.astro";
         display: none;
       }
 
+      @include hover-none {
+        &.is-show {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
       @include hover {
         top: auto;
         left: 8em;
@@ -166,6 +175,7 @@ import ProfileDataType from "@components/profileDataType.astro";
     margin-top: 45px;
     @include fz-vw(9, 375, $breakpointSp, 375 * $font_shrink_sp);
     line-height: 1.3;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       margin-top: 92px;

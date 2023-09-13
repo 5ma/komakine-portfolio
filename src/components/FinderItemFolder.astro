@@ -69,6 +69,12 @@ const { title, date, type, href } = Astro.props;
         grid-template-areas: "icon title date action";
         padding: 38px 0;
       }
+
+      @include hover {
+        &:hover {
+          background: rgb(var(--color-selection-blue-rgb) / 0.5);
+        }
+      }
     }
 
     &[href],
@@ -82,13 +88,21 @@ const { title, date, type, href } = Astro.props;
     @include fz-vw(13, 375, 375 * 2, 375 * $font_shrink_sp);
     line-height: 1.3;
     letter-spacing: 0.03em;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       margin-top: 0;
       @include fz-vw(16, 1400, 1400 * 2, 1400 * 0.8);
     }
 
+    @include hover {
+      .wrapper:hover & {
+        text-decoration: underline;
+      }
+    }
+
     :global(#{$listViewMode}) & {
+      width: fit-content;
       margin-top: 0;
       grid-area: title;
       @include fz-vw(30, 375, 375 * 2, 375 * $font_shrink_sp);
@@ -142,19 +156,56 @@ const { title, date, type, href } = Astro.props;
   }
 
   .icon {
+    position: relative;
     display: grid;
     place-items: center;
     aspect-ratio: 1 / 1;
 
+    @include hover {
+      &::before {
+        position: absolute;
+        top: 2%;
+        right: -5%;
+        bottom: 3%;
+        left: -5%;
+        background: transparent;
+        border-radius: 8px;
+        content: '';
+        box-sizing: border-box;
+        pointer-events: none;
+        transition: .1s;
+
+        :global(#{$listViewMode}) & {
+          top: 0;
+          right: -9%;
+          bottom: 0;
+          left: -9%;
+          opacity: 0;
+        }
+      }
+
+      .wrapper:hover & {
+        &::before {
+          background: rgb(var(--color-selection-blue-rgb) / 0.5);
+        }
+      }
+    }
+
     :global(svg) {
+      position: relative;
       width: 100%;
       height: 100%;
       object-fit: contain;
       fill: var(--color-theme-current);
+      transition: fill cubic-bezier(0.83, 0, 0.17, 1) 1s;
     }
 
     :global(#{$listViewMode}) & {
       grid-area: icon;
+
+      &::before {
+        content: none;
+      }
     }
   }
 </style>

@@ -61,6 +61,7 @@ export default {
     background: none;
     border: 0;
     box-sizing: border-box;
+    transition: color .2s;
 
     @include pc {
       font-size: px-to-rem(18);
@@ -84,10 +85,12 @@ export default {
     &__text {
       vertical-align: baseline;
       background: linear-gradient(transparent 96%, currentColor 96%) no-repeat 100% 0 / 0% 100%;
+      transition: background-size .2s var(--ease-out6);
 
       #{$_this}.is-active & {
         background-position: 0 100%;
         background-size: 100% 100%;
+        transition-duration: .4s;
       }
     }
   }

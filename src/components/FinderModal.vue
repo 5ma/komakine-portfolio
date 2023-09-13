@@ -19,9 +19,9 @@
       <h1 id="dialog-title" class="dialog__title">{{ title }}</h1>
     </div>
     <div class="dialog__content">
-      <div class="dialog__text" v-show="type === 'text'" v-html="textContents">
+      <div class="dialog__text" v-if="type === 'text'" v-html="textContents">
       </div>
-      <div class="dialog__playlist" v-show="type === 'playlist'">
+      <div class="dialog__playlist" v-else-if="type === 'playlist' && isOpen">
         <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;overflow:hidden;border-radius:0;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/playlist/weekly-playlist/pl.u-NepSLlomm1"></iframe>
       </div>
     </div>

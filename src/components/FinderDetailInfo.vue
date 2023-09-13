@@ -70,6 +70,7 @@ export default {
     display: none;
     max-height: calc(100svh - 120px);
     overflow-y: auto;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       display: block;
@@ -92,6 +93,7 @@ export default {
 
   .data {
     margin-top: 38px;
+
     &__item {
       & + & {
         margin-top: 37px;
@@ -113,8 +115,12 @@ export default {
       line-height: math.div(26, 16);
       letter-spacing: 0.04em;
 
-      :global(a) {
+      a {
         text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

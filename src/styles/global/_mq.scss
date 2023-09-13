@@ -25,6 +25,12 @@ $font_shrink_pc: 0.85;
   }
 }
 
+@mixin hover-none {
+  @media (hover: none) {
+    @content;
+  }
+}
+
 @mixin reduce {
   @media (prefers-reduced-motion: reduce) {
     @content;

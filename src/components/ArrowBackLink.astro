@@ -32,16 +32,41 @@ const { href, text, class: className } = Astro.props
     font-size: px-to-rem(13);
     text-decoration: none;
     text-transform: uppercase;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+    z-index: 1;
 
     @include pc {
       gap: 15px;
       font-size: px-to-rem(18);
+    }
+
+    @include hover {
+      &::before {
+        position: absolute;
+        top: 3px;
+        left: -10px;
+        right: -8px;
+        bottom: 3px;
+        z-index: -1;
+        content: '';
+        background: rgb(var(--color-selection-blue-rgb) / 0.5);
+        border-radius: 5px;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+      }
     }
   }
 
   .arrow {
     :global(svg) {
       fill: var(--color-theme-current);
+      transition: fill cubic-bezier(0.83, 0, 0.17, 1) 1s;
     }
   }
 </style>

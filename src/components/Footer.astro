@@ -1,7 +1,7 @@
 ---
-import { tools } from '@constants/tools.ts';
-import IconGitHub from '@components/svg/IconGitHub.astro';
-import IconEmail from '@components/svg/IconEmail.astro';
+import { tools } from "@constants/tools.ts";
+import IconGitHub from "@components/svg/IconGitHub.astro";
+import IconEmail from "@components/svg/IconEmail.astro";
 ---
 
 <footer class="footer l-sp-inner l-pc-inner">
@@ -14,42 +14,73 @@ import IconEmail from '@components/svg/IconEmail.astro';
         </div>
       </dt>
       <dd class="link__description">
-        <a class="link__description-link" href="https://github.com/komakine-anna" target="_blank" rel="noopener noreferrer">@komakine-anna</a>
+        <a
+          class="link__description-link"
+          href="https://github.com/komakine-anna"
+          target="_blank"
+          rel="noopener noreferrer">@komakine-anna</a
+        >
       </dd>
       <dd class="link__description">
-        <a class="link__description-link" href="https://github.com/5ma" target="_blank" rel="noopener noreferrer">@5ma</a>
+        <a
+          class="link__description-link"
+          href="https://github.com/5ma"
+          target="_blank"
+          rel="noopener noreferrer">@5ma</a
+        >
       </dd>
     </div>
     <div class="link__item">
       <dt class="link__title">
         Email
         <div class="link__icon link__icon--mail">
-          <IconEmail />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+            ><rect width="48" height="48" fill="none"
+            ></rect><rect
+              x="6"
+              y="13"
+              width="36"
+              height="29"
+              rx="3"
+              stroke-width="2"
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"></rect><polyline
+              points="6 19 24 31 42 19"
+              fill="none"
+              stroke="#000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"></polyline></svg
+          >
         </div>
       </dt>
       <dd class="link__description">
-        <a class="link__description-link" href="mailto:komakine.anna@outlook.jp">komakine.anna@outlook.jp</a>
+        <a class="link__description-link" href="mailto:komakine.anna@outlook.jp"
+          >komakine.anna@outlook.jp</a
+        >
       </dd>
     </div>
   </dl>
   <dl class="tool">
     <dt class="tool__title">Tools</dt>
     <div class="tool__list">
-      {tools.map(tool => (
-        <dd class="tool__item">{tool}</dd>
-      ))}
+      {tools.map((tool) => <dd class="tool__item">{tool}</dd>)}
     </div>
   </dl>
 </footer>
 
 <style lang="scss">
-  @use 'sass:math';
+  @use "sass:math";
   @use "@styles/global/" as *;
 
   .footer {
     position: relative;
     padding: 42px 0 44px;
     border-top: 1px solid var(--color-theme-current);
+    transition: cubic-bezier(0.83, 0, 0.17, 1) 1s;
+    transition-property: color, border-color;
 
     @include pc {
       padding: 60px 0 88px;
@@ -97,6 +128,16 @@ import IconEmail from '@components/svg/IconEmail.astro';
       &--mail {
         width: 1.05em;
         translate: -13% -7%;
+
+        svg {
+          stroke-width: 0;
+        }
+
+        rect,
+        polyline {
+          stroke: var(--color-theme-current);
+          transition: stroke cubic-bezier(0.83, 0, 0.17, 1) 1s;
+        }
       }
       :global(svg) {
         width: 100%;
@@ -122,7 +163,32 @@ import IconEmail from '@components/svg/IconEmail.astro';
       }
     }
     &__description-link {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: fit-content;
       text-decoration: none;
+
+      @include hover {
+        &::before {
+          position: absolute;
+          z-index: -1;
+          top: -2px;
+          left: -5px;
+          right: -5px;
+          bottom: -2px;
+          background: rgb(var(--color-selection-blue-rgb) / 0.5);
+          border-radius: 5px;
+          content: "";
+          opacity: 0;
+        }
+
+        &:hover {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 
@@ -144,7 +210,7 @@ import IconEmail from '@components/svg/IconEmail.astro';
     }
     &__title {
       &::after {
-        content: '：';
+        content: "：";
       }
     }
     &__list {

@@ -52,6 +52,7 @@ export default {
 
   .dropdown {
     display: block;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     &__label {
       display: block;
@@ -84,6 +85,7 @@ export default {
         background-color: var(--color-theme-current);
         transform: translateY(-50%);
         clip-path: polygon(50% 100%, 0 0, 100% 0);
+        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
         @include pc {
           right: 10px;
@@ -104,6 +106,7 @@ export default {
       border-bottom: 1px solid var(--color-theme-current);
       background: none;
       cursor: pointer;
+      transition: border-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
       @include pc {
         padding: 5px 30px 5px 10px;

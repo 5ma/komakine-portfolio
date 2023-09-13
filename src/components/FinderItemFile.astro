@@ -1,45 +1,49 @@
 ---
-import IconTxt from '@components/svg/IconTxt.astro';
-import IconJson from '@components/svg/IconJson.astro';
+import IconTxt from "@components/svg/IconTxt.astro";
+import IconJson from "@components/svg/IconJson.astro";
 
 interface Props {
-  title: string
-  date: `${number}.${number}.${number}`
-  type: 'text' | 'json'
-  href?: string
+  title: string;
+  date: `${number}.${number}.${number}`;
+  type: "text" | "json";
+  href?: string;
 }
 
 const { title, date, type, href } = Astro.props;
-const isTargetBlack = href && href.includes('http')
+const isTargetBlack = href && href.includes("http");
 ---
 
-{type === 'json' ? (
-  <a href={href} class="wrapper" target={isTargetBlack ? '_blank' : '_self'}>
-    <div class="icon">
-      <IconJson label='jsonファイルのアイコン' />
-    </div>
-    <div class="title">{title}</div>
-    <div class="date">{date}</div>
-    <div class="action">View</div>
-  </a>
-) : (
-  <button type="button" class="wrapper" data-modal-open="text">
-    <div class="icon">
-      <IconTxt label='テキストファイルのアイコン' />
-    </div>
-    <div class="title" data-modal-title>{title}</div>
-    <div class="date">{date}</div>
-    <div class="action">Read</div>
-    <template>
-      <div class="text">
-        <slot />
+{
+  type === "json" ? (
+    <a href={href} class="wrapper" target={isTargetBlack ? "_blank" : "_self"}>
+      <div class="icon">
+        <IconJson label="jsonファイルのアイコン" />
       </div>
-    </template>
-  </button>
-)}
+      <div class="title">{title}</div>
+      <div class="date">{date}</div>
+      <div class="action">View</div>
+    </a>
+  ) : (
+    <button type="button" class="wrapper" data-modal-open="text">
+      <div class="icon">
+        <IconTxt label="テキストファイルのアイコン" />
+      </div>
+      <div class="title" data-modal-title>
+        {title}
+      </div>
+      <div class="date">{date}</div>
+      <div class="action">Read</div>
+      <template>
+        <div class="text">
+          <slot />
+        </div>
+      </template>
+    </button>
+  )
+}
 
 <style lang="scss">
-  @use 'sass:math';
+  @use "sass:math";
   @use "@styles/global/" as *;
 
   .wrapper {
@@ -63,17 +67,26 @@ const isTargetBlack = href && href.includes('http')
       display: grid;
       gap: 1px 6%;
       grid-template-columns: percentage(math.div(130, 670)) 1fr;
-      grid-template-areas: "icon title"
-      "icon date";
+      grid-template-areas:
+        "icon title"
+        "icon date";
       align-items: center;
       padding: 21px 0;
       text-align: left;
 
       @include pc {
         gap: 0 50px;
-        grid-template-columns: clamp(130px, percentage(math.div(160, 1240)), 160px * 1.5) 1fr auto auto;
+        grid-template-columns:
+          clamp(130px, percentage(math.div(160, 1240)), 160px * 1.5)
+          1fr auto auto;
         grid-template-areas: "icon title date action";
         padding: 38px 0;
+      }
+
+      @include hover {
+        &:hover {
+          background: rgb(var(--color-selection-blue-rgb) / 0.5);
+        }
       }
     }
 
@@ -89,10 +102,17 @@ const isTargetBlack = href && href.includes('http')
     font-weight: 500;
     line-height: 1.3;
     letter-spacing: 0.03em;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       margin-top: 0;
       @include fz-vw(16, 1400, 1400 * 2, 1400 * 0.8);
+    }
+
+    @include hover {
+      .wrapper:hover & {
+        text-decoration: underline;
+      }
     }
 
     :global(#{$listViewMode}) & {
@@ -149,15 +169,19 @@ const isTargetBlack = href && href.includes('http')
   }
 
   .icon {
+    position: relative;
     display: grid;
     place-items: center;
     aspect-ratio: 1 / 1;
 
     :global(svg) {
+      position: relative;
+      display: block;
       width: 83.5%;
       height: 83.5%;
       object-fit: contain;
       fill: var(--color-theme-current);
+      transition: fill cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
       @include pc {
         width: 84%;
@@ -165,8 +189,36 @@ const isTargetBlack = href && href.includes('http')
       }
     }
 
+    @include hover {
+      &::before {
+        position: absolute;
+        top: 2%;
+        right: -5%;
+        bottom: 3%;
+        left: -5%;
+        background: transparent;
+        border-radius: 8px;
+        content: "";
+        box-sizing: border-box;
+        pointer-events: none;
+        transition: 0.1s;
+      }
+
+      .wrapper:hover & {
+        &::before {
+          background: rgb(var(--color-selection-blue-rgb) / 0.5);
+        }
+      }
+    }
+
     :global(#{$listViewMode}) & {
       grid-area: icon;
+
+      @include hover {
+        &::before {
+          content: none;
+        }
+      }
     }
   }
 </style>

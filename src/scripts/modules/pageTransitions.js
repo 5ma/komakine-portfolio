@@ -19,12 +19,6 @@ const networkDescElm = document.querySelectorAll(
   '[data-typed-output="network-desc"]'
 );
 
-const state = {
-  title: [],
-  json: undefined,
-  network: undefined,
-};
-
 const CONTROLLER = {
   instance: {
     title: [],
@@ -57,10 +51,6 @@ const CONTROLLER = {
   }
 }
 
-function resetAll() {
-  CONTROLLER.state.resetAllState()
-}
-
 export const transitionOnEnter = (page) => {
   CONTROLLER.instance.title = showTitle();
   CONTROLLER.instance.json = showJsonData();
@@ -87,9 +77,12 @@ export const transitionOnEnter = (page) => {
     const commonOptions = {
       typeSpeed: 27,
       backSpeed: 15,
+      onBegin: ({ el }) => {
+        el.closest('.data').classList.remove('is-typed-complete')
+      }
     };
 
-    if (page === "top") {
+    if (page === 'top') {
       return new Typed(jsonElm, {
         ...commonOptions,
         strings: profileData,
@@ -104,7 +97,7 @@ export const transitionOnEnter = (page) => {
       strings: [`{ page: '${page.charAt(0).toUpperCase()}${page.slice(1)}' }`],
       loop: false,
       onComplete: ({ el }) => {
-        el.closest(".data").classList.add("is-typed-complete");
+        el.closest('.data').classList.add('is-typed-complete');
       },
     });
   }

@@ -59,6 +59,7 @@ export default {
     display: grid;
     gap: 35px percentage(math.div(20, 335));
     grid-template-columns: 1fr 1fr;
+    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       gap: 38px 49px;
@@ -91,6 +92,25 @@ export default {
         margin: 5px;
       }
 
+      @include hover {
+
+        &::before {
+          position: absolute;
+          content: '';
+          top: -10px;
+          right: -10px;
+          bottom: -10px;
+          left: -10px;
+          border-radius: 5px;
+        }
+
+        .finder-content__link:hover & {
+          &::before {
+            background: rgb(var(--color-selection-blue-rgb) / 0.5);
+          }
+        }
+      }
+
       &-img {
         position: absolute;
         top: 0;
@@ -119,10 +139,18 @@ export default {
       line-height: math.div(26, 16);
       letter-spacing: 0.05em;
       overflow-wrap: anywhere;
+      border-radius: 5px;
 
       @include pc {
         margin-top: 18px;
         font-size: px-to-rem(16);
+      }
+
+      @include hover {
+        .finder-content__link:hover & {
+          color: var(--color-white);
+          background: rgb(var(--color-selection-blue-rgb) / 0.5);
+        }
       }
     }
   }

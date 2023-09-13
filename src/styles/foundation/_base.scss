@@ -39,6 +39,7 @@ html {
   position: relative;
   background-color: var(--bg-main-color);
   scroll-behavior: smooth;
+  transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 }
 
 body {
