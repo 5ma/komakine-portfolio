@@ -37,6 +37,9 @@ export const createWorksApp = () => {
       getData() {
         client.get({
           endpoint: 'works',
+          queries: {
+            limit: 100
+          }
         })
         .then((res) => {
           import.meta.env.DEV && console.log(res.contents)
