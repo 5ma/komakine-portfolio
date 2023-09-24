@@ -1,3 +1,50 @@
 {
-  "name": "駒木根 安那"
+  "name": "Komakine Anna",
+  "image": "https://komakine-portfolio.vercel.app/assets/image/profile.jpeg",
+  "label": "Frontend Developer",
+  "birthday": "1996-02-28",
+  "age": "27",
+  "sex": "女",
+  "location": "神奈川",
+  "tel": "090-XXXX-XXXX",
+  "email": "komakine.anna@outlook.jp",
+  "education": [
+    {
+      "startDate": "2011年 4月",
+      "endDate": "2014年 3月",
+      "institution": "神奈川県立横浜平沼高等学校"
+    },
+    {
+      "startDate": "2014年 4月",
+      "endDate": "2018年 3月",
+      "institution": "明治大学経営学部　経営学科"
+    }
+  ],
+  "work_experience": [
+    {
+      "startDate": "2014年 4月",
+      "endDate": "2019年 8月",
+      "company": "株式会社あとらす二十一",
+      "employment_status": "正社員"
+    },
+    {
+      "startDate": "2019年 10月",
+      "endDate": "2022年 11月",
+      "company": "株式会社カークスヴィル",
+      "employment_status": "正社員"
+    },
+    {
+      "startDate": "2022年 12月",
+      "endDate": "2023年 5月",
+      "company": "株式会社ReLic",
+      "employment_status": "正社員"
+    },
+    {
+      "startDate": "2023年 6月",
+      "endDate": "",
+      "company": "株式会社ReLic",
+      "employment_status": "業務委託"
+    }
+  ],
+  "qualifications": "なし"
 }
