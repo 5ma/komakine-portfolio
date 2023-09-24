@@ -1,179 +1,209 @@
 ---
-import FinderItemFolder from '@components/FinderItemFolder.astro';
-import FinderItemFile from '@components/FinderItemFile.astro';
-import Layout from '@layouts/Layout.astro';
-import ViewModeChanger from '@components/ViewModeChanger.astro';
+import FinderItemFolder from "@components/FinderItemFolder.astro";
+import FinderItemFile from "@components/FinderItemFile.astro";
+import Layout from "@layouts/Layout.astro";
+import ViewModeChanger from "@components/ViewModeChanger.astro";
 ---
 
 <Layout>
-	<div data-barba="container" data-barba-namespace="top">
-		<div class="contents l-sp-inner l-pc-inner u-pt-sp-80 u-pb-sp-82 u-pt-pc-100">
-			<div class="view-changer">
-				<ViewModeChanger />
-			</div>
-			<ul class="finder u-mt-sp-17">
-				<li class="finder__item">
-					<FinderItemFolder
-						title="Works"
-						date='2023.08.30'
-						href='/works/'
-						type='folder'
-						/>
-					</li>
-					<li class="finder__item">
-						<FinderItemFolder
-							title="Skills"
-							date='2023.08.30'
-							href='/skills/'
-							type='folder'
-						/>
-					</li>
-				<li class="finder__item">
-					<FinderItemFile
-						title="About.txt"
-						date='2023.08.30'
-						type="text"
-					>
-						自己紹介テキストが入ります。
-					</FinderItemFile>
-				</li>
-				<li class="finder__item">
-					<FinderItemFile
-						title="CV.txt"
-						date='2023.08.30'
-						type="text"
-					>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						CV.txtの詳細テキストが入ります<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-					</FinderItemFile>
-				</li>
-				<li class="finder__item">
-					<FinderItemFile
-						title="resume.json"
-						date='2023.08.30'
-						type="json"
-						href='https://github.com/5ma/komakine-portfolio/blob/main/public/assets/json/resume.json'
-					/>
-				</li>
-				<li class="finder__item">
-					<FinderItemFolder
-						title="iTunes Playlist"
-						date='2023.08.30'
-						type='playlist'
-					/>
-				</li>
-			</ul>
-		</div>
-		<div id="v-modal">
-			<finder-modal />
-		</div>
-	</div>
+  <div data-barba="container" data-barba-namespace="top">
+    <div
+      class="contents l-sp-inner l-pc-inner u-pt-sp-80 u-pb-sp-82 u-pt-pc-100"
+    >
+      <div class="view-changer">
+        <ViewModeChanger />
+      </div>
+      <ul class="finder u-mt-sp-17">
+        <li class="finder__item">
+          <FinderItemFolder
+            title="Works"
+            date="2023.08.30"
+            href="/works/"
+            type="folder"
+          />
+        </li>
+        <li class="finder__item">
+          <FinderItemFolder
+            title="Skills"
+            date="2023.08.30"
+            href="/skills/"
+            type="folder"
+          />
+        </li>
+        <li class="finder__item">
+          <FinderItemFile title="About.txt" date="2023.08.30" type="text">
+            2月28日、神奈川生まれ。大学時代、ZINEという自由度の高い冊子制作に出会い、形になる表現やクリエイティブなものづくりの魅力に目覚めました。<br
+            />
+            その延長で紙媒体のお仕事に携わりたいと考えましたが、Webが持つ未来の可能性や表現の幅の広さに魅力を感じ、この世界へ飛び込むことを決意します。<br
+            />
+            <br />
+            「別になくてもいいけど、あったらもっといいよね」という小さな驚きや楽しさにワクワクします。<br
+            />
+            具体的にWebで言ったら、アニメーション演出やユーザーアクションによって生み出される仕掛けなど。必須ではない要素こそ、人の心や行動を動かすものだと信じながら、こだわりを持って技術的な挑戦を楽しんでいます。<br
+            />
+            <br />
+            好きなWebサイト：<br />
+            <a
+              href="https://saiyo.sme.co.jp/graduate/18/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >ソニーミュージックグループ新卒採用2018</a
+            > （心高鳴る仕掛けが盛りだくさんです）<br />
+            <a
+              href="https://saiyo.sme.co.jp/graduate/19/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >ソニーミュージック新卒採用2019＜世界を君がおもしろくするんだ＞</a
+            > （ぜひ、ページのソースを表示してみてください）<br />
+            <a
+              href="https://www.featuredprojects.jp/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Featured Projects 2023 | よいものづくりは、明日を拓く</a
+            > （サイト上にメモや落書きができる仕掛けが面白いです）<br />
+            <a
+              href="https://www.otsuka.co.jp/cmt/to_programmer/"
+              target="_blank"
+              rel="noopener noreferrer">CalorieMate to Programmer</a
+            > （コマンドを入力することで操作するCUIモードなど、プログラマーの心くすぐる演出が散りばめられていて大好きなプロモーションです）
+          </FinderItemFile>
+        </li>
+        <li class="finder__item">
+          <FinderItemFile title="CV.txt" date="2023.08.30" type="text">
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            CV.txtの詳細テキストが入ります<br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </FinderItemFile>
+        </li>
+        <li class="finder__item">
+          <FinderItemFile
+            title="resume.json"
+            date="2023.08.30"
+            type="json"
+            href="https://github.com/5ma/komakine-portfolio/blob/main/public/assets/json/resume.json"
+          />
+        </li>
+        <li class="finder__item">
+          <FinderItemFolder
+            title="iTunes Playlist"
+            date="2023.08.30"
+            type="playlist"
+          />
+        </li>
+      </ul>
+    </div>
+    <div id="v-modal">
+      <finder-modal></finder-modal>
+    </div>
+  </div>
 </Layout>
 
 <style lang="scss">
-	@use 'sass:math';
+  @use "sass:math";
   @use "@styles/global/" as *;
 
-	.contents {
-		position: relative;
-	}
+  .contents {
+    position: relative;
+  }
 
-	.view-changer {
-		width: fit-content;
-		margin-left: auto;
+  .view-changer {
+    width: fit-content;
+    margin-left: auto;
 
-		@include pc {
-			position: absolute;
-			bottom: calc(100% - 5px);
-			right: 0;
-		}
-	}
+    @include pc {
+      position: absolute;
+      bottom: calc(100% - 5px);
+      right: 0;
+    }
+  }
 
-	.finder {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4px 0;
+  .finder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 0;
 
-		@include pc {
-			gap: 60px percentage(math.div(47.5, 1240));
-			grid-template-columns: repeat(auto-fit, minmax(170px, percentage(math.div(210, 1240))));
-			// grid-template-columns: repeat(auto-fit, minmax(170px, min(percentage(math.div(210, 1240)), 216px * 1.65)));
-			padding-bottom: 196px;
-		}
+    @include pc {
+      gap: 60px percentage(math.div(47.5, 1240));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(170px, percentage(math.div(210, 1240)))
+      );
+      // grid-template-columns: repeat(auto-fit, minmax(170px, min(percentage(math.div(210, 1240)), 216px * 1.65)));
+      padding-bottom: 196px;
+    }
 
-		:global(#{$listViewMode}) & {
-			display: block;
-		}
+    :global(#{$listViewMode}) & {
+      display: block;
+    }
 
-		&__item {
-			position: relative;
-			&:not(:last-of-type) {
-				&::after {
-					:global(#{$listViewMode}) & {
-						position: absolute;
-						bottom: 0;
-						left: 0;
-						width: 100%;
-						height: 1px;
-						content: '';
-						border-bottom: 1px solid var(--color-theme-current);
-						box-sizing: border-box;
-					}
-				}
-			}
-		}
-	}
+    &__item {
+      position: relative;
+      &:not(:last-of-type) {
+        &::after {
+          :global(#{$listViewMode}) & {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            content: "";
+            border-bottom: 1px solid var(--color-theme-current);
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+  }
 </style>
