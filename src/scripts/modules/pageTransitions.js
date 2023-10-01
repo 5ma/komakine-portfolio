@@ -54,9 +54,6 @@ const CONTROLLER = {
 export const transitionOnEnter = (page) => {
   CONTROLLER.instance.title = showTitle();
   CONTROLLER.instance.json = showJsonData();
-  setTimeout(() => {
-    console.log('showHeaderInfo', showHeaderInfo())
-  }, 100);
 
   // titleのタイピングアニメーション
   function showTitle() {
