@@ -3,6 +3,7 @@ import Typed from "typed.js";
 import shuffleLetters from "shuffle-letters";
 import { networkData } from "@constants/networkData";
 import { shuffle } from "txt-shuffle";
+import { scroll } from "@scripts/modules/scroll";
 
 export const LEAVE_DURATION = 0.4; // 400ms秒間アニメーションしたあとページ遷移する
 
@@ -75,7 +76,7 @@ export const transitionOnEnter = (page) => {
 
   function showJsonData() {
     const commonOptions = {
-      typeSpeed: 27,
+      typeSpeed: 35,
       backSpeed: 15,
       onBegin: ({ el }) => {
         el.closest('.data').classList.remove('is-typed-complete')
@@ -126,6 +127,9 @@ export const transitionOnEnter = (page) => {
 
 export const transitionOnLeave = () => {
   import.meta.env.DEV && console.log("transitionOnLeave");
+
+  // ページの一番上までスクロール
+  scroll.scrollTop()
 
   const duration = 0.4;
 

@@ -8,6 +8,7 @@ import { setPjax } from "@scripts/modules/setPjax"
 import { setUpJs } from "@scripts/modules/setUpJs"
 import { transitionOnEnter } from "@scripts/modules/pageTransitions"
 import { setToggleType } from "@scripts/modules/setToggleType"
+import { scroll } from '@scripts/modules/scroll'
 
 const page = barbaContainer.dataset.barbaNamespace
 
@@ -16,7 +17,9 @@ container.setAttribute('data-page', page)
 setPjax()
 siteTheme.set()
 setToggleType()
+// コードブロックをハイライト表示する
 hljs.highlightAll()
 // ページごとに個別の処理を実行
 setUpJs.set(page)
 transitionOnEnter(page)
+scroll.setUp()
