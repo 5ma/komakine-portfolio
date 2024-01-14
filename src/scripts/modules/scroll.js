@@ -17,7 +17,16 @@ export const scroll = {
     if (this.instance === undefined) return
     this.instance.scrollTo(0)
   },
+  stop() {
+    if (this.instance === undefined) return
+    this.instance.stop()
+  },
+  start() {
+    if (this.instance === undefined) return
+    this.instance.start()
+  },
   resize() {
+    if (this.instance === undefined) return
     this.instance.resize()
   }
 }

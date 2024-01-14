@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { scroll } from '@scripts/modules/scroll'
+
 export default {
   data() {
     return {
@@ -36,6 +38,12 @@ export default {
       type: 'text',  // 'text' | 'playlist'
       title: '',     // モーダルのタイトル
       textContents: '',  // typeが 'text' だった場合に表示するコンテンツ部分
+    }
+  },
+  watch: {
+    isOpen() {
+      // モーダルが開いている時は後ろのコンテンツがスクロールしないようにする
+      this.isOpen ? scroll.stop() : scroll.start()
     }
   },
   mounted() {
