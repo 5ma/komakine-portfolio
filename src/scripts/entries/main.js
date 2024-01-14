@@ -22,4 +22,5 @@ hljs.highlightAll()
 // ページごとに個別の処理を実行
 setUpJs.set(page)
 transitionOnEnter(page)
+// 慣性スクロールのセットアップ
 scroll.setUp()
