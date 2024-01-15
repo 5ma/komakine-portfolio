@@ -3,8 +3,10 @@ import Lenis from '@studio-freight/lenis'
 export const scroll = {
   instance: undefined,
   setUp() {
-    this.instance = new Lenis({})
-    console.log('this.instance', this.instance)
+    this.instance = new Lenis({
+      lerp: 0.1,
+      duration: 0.9
+    })
 
     function raf(time) {
       scroll.instance.raf(time)
