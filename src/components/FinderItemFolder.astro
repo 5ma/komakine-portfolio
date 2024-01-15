@@ -1,39 +1,43 @@
 ---
-import IconFolder from '@components/svg/IconFolder.astro';
-import IconPlaylist from '@components/svg/IconPlaylist.astro';
+import IconFolder from "@components/svg/IconFolder.astro";
+import IconPlaylist from "@components/svg/IconPlaylist.astro";
 
 interface Props {
-  title: string
-  date: `${number}.${number}.${number}`
-  type: 'folder' | 'playlist'
-  href?: string
+  title: string;
+  date: `${number}.${number}.${number}`;
+  type: "folder" | "playlist";
+  href?: string;
 }
 
 const { title, date, type, href } = Astro.props;
 ---
 
-{type === 'folder' ? (
-  <a class="wrapper link-pjax" href={href}>
-    <div class="icon">
-      <IconFolder label='フォルダアイコン' />
-    </div>
-    <div class="title">{title}</div>
-    <div class="date">{date}</div>
-    <div class="action">View</div>
-  </a>
-) : (
-  <button class="wrapper" type="button" data-modal-open="playlist">
-    <div class="icon">
-      <IconPlaylist label='iTunesアイコン' />
-    </div>
-    <div class="title" data-modal-title>{title}</div>
-    <div class="date">{date}</div>
-    <div class="action">View</div>
-  </button>
-)}
+{
+  type === "folder" ? (
+    <a class="wrapper link-pjax" href={href}>
+      <div class="icon">
+        <IconFolder label="フォルダアイコン" />
+      </div>
+      <div class="title">{title}</div>
+      <div class="date">{date}</div>
+      <div class="action">View</div>
+    </a>
+  ) : (
+    <button class="wrapper" type="button" data-modal-open="playlist">
+      <div class="icon">
+        <IconPlaylist label="iTunesアイコン" />
+      </div>
+      <div class="title" data-modal-title>
+        {title}
+      </div>
+      <div class="date">{date}</div>
+      <div class="action">View</div>
+    </button>
+  )
+}
 
 <style lang="scss">
-  @use 'sass:math';
+  @use "sass:math";
   @use "@styles/global/" as *;
 
   .wrapper {
@@ -57,15 +61,20 @@ const { title, date, type, href } = Astro.props;
       display: grid;
       gap: 1px 6%;
       grid-template-columns: percentage(math.div(130, 670)) 1fr;
-      grid-template-areas: "icon title"
-      "icon date";
+      grid-template-areas:
+        "icon title"
+        "icon date";
       align-items: center;
       padding: 21px 0;
       text-align: left;
 
       @include pc {
         gap: 0 50px;
-        grid-template-columns: clamp(130px, percentage(math.div(160, 1240)), 160px * 1.5) 1fr auto auto;
+        grid-template-columns: clamp(
+            130px,
+            percentage(math.div(160, 1240)),
+            160px * 1.5
+          ) 1fr auto auto;
         grid-template-areas: "icon title date action";
         padding: 38px 0;
       }
@@ -98,6 +107,11 @@ const { title, date, type, href } = Astro.props;
     @include hover {
       .wrapper:hover & {
         text-decoration: underline;
+
+        :global(#{$listViewMode}) & {
+          text-decoration-thickness: 3px;
+          text-underline-offset: 4px;
+        }
       }
     }
 
@@ -170,10 +184,10 @@ const { title, date, type, href } = Astro.props;
         left: -5%;
         background: transparent;
         border-radius: 8px;
-        content: '';
+        content: "";
         box-sizing: border-box;
         pointer-events: none;
-        transition: .1s;
+        transition: 0.1s;
 
         :global(#{$listViewMode}) & {
           top: 0;

@@ -112,6 +112,11 @@ const isTargetBlack = href && href.includes("http");
     @include hover {
       .wrapper:hover & {
         text-decoration: underline;
+
+        :global(#{$listViewMode}) & {
+          text-decoration-thickness: 3px;
+          text-underline-offset: 4px;
+        }
       }
     }
 
