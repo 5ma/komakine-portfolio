@@ -65,11 +65,7 @@ export const transitionOnEnter = (page) => {
       return shuffleLetters(elm, {
         text: titleTextArray[i],
         iterations: 14,
-        fps: 30,
-        onComplete: (el) => {
-          if (i === titleElms.length - 1) {
-          }
-        },
+        fps: 25,
       })
     })
   }
