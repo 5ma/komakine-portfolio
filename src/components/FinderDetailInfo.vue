@@ -69,6 +69,7 @@ export default {
     top: 60px;
     display: none;
     max-height: calc(100svh - 120px);
+    padding-right: 59px;
     overflow-y: auto;
     transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 

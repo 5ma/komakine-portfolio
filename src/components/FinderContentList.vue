@@ -59,6 +59,7 @@ export default {
     display: grid;
     gap: 35px percentage(math.div(20, 335));
     grid-template-columns: 1fr 1fr;
+    padding-left: 59px;
     transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
