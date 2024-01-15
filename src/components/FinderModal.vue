@@ -18,7 +18,7 @@
       </button>
       <h1 id="dialog-title" class="dialog__title">{{ title }}</h1>
     </div>
-    <div class="dialog__content">
+    <div class="dialog__content" data-lenis-prevent>
       <div class="dialog__text" v-if="type === 'text'" v-html="textContents">
       </div>
       <div class="dialog__playlist" v-else-if="type === 'playlist' && isOpen">
@@ -193,7 +193,7 @@ export default {
       @include font-ja;
       overflow-x: hidden;
       overflow-y: auto;
-      overscroll-behavior: contain;
+      overscroll-behavior-y: contain;
 
       @include pc {
         font-size: px-to-rem(16);
