@@ -3,10 +3,27 @@ import anime from 'animejs/lib/anime.es.js'
 const circleButtonElm = document.querySelector('[data-color-change="button"]')
 const circleElem = document.querySelector('[data-color-change="circle"]')
 
+const animation = {
+  blinkTwice(targets, delay = 0, onCompleted = undefined) {
+    // 2回点滅するアニメーション
+    return {
+      targets,
+      opacity: [1, 0, 1, 0.4, 1],
+      duration: 300,
+      delay,
+      loop: 1,
+      easing: 'steps(5)',
+      complete() {
+        if (onCompleted) onCompleted()
+      }
+    }
+  }
+}
+
 export const siteTheme = {
   animeInstance: undefined,
   currentIndex: 0,
-  colorChangeInterval: 1000 * 5, // 10秒ごとに色を変更
+  colorChangeInterval: 1000 * 10, // 10秒ごとに色を変更
   colors: [
     'white',
     'pink',
@@ -37,6 +54,17 @@ export const siteTheme = {
   },
   changeColor(index) {
     document.documentElement.style.setProperty('--color-theme-current', `var(--color-theme-${this.colors[index]})`)
+
+    // 要素をアニメーションさせながらテーマカラーを適用させていく
+    const targets = document.querySelectorAll('[data-change-color-target]')
+    let totalDelay = 0
+    const defaultAddDelay = 45 // ms
+
+    targets.forEach((target, i) => {
+      const addDelay = target.dataset?.changeColorDelay ?? defaultAddDelay
+      totalDelay += parseInt(addDelay)
+      anime(animation.blinkTwice(target, totalDelay))
+    })
   },
   attach() {
     circleButtonElm.addEventListener('click', () => {
@@ -44,13 +72,19 @@ export const siteTheme = {
       if (!this.animeInstance || this.isResetting) return
 
       if (this.animeInstance.paused) {
-        this.animeInstance.play()
-        circleButtonElm.setAttribute('aria-label', 'サイトのテーマカラー自動切り替えをストップする')
+        this.start()
       } else {
-        this.animeInstance.pause()
-        circleButtonElm.setAttribute('aria-label', 'サイトのテーマカラー自動切り替えを再開する')
+        this.pause()
       }
     })
+  },
+  start() {
+    this.animeInstance.play()
+    circleButtonElm.setAttribute('aria-label', 'サイトのテーマカラー自動切り替えをストップする')
+  },
+  pause() {
+    this.animeInstance.pause()
+    circleButtonElm.setAttribute('aria-label', 'サイトのテーマカラー自動切り替えを再開する')
   },
   set() {
     this.changeColor(this.currentIndex) // 初期値をset
