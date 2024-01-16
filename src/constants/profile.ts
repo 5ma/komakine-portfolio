@@ -1,9 +1,11 @@
+import { calculateAge } from "@scripts/modules/calculateAge"
+
 const profileTextData = [
   "job : 'Frontend Developer'",
   "birthday : '1996-02-28'",
-  "age : '27'",
+  `age : ${calculateAge('1996-02-28')}`,
   "blood_type : 'A'",
-  "height : '150'",
+  "height : 150",
   "weight : '??? apples'",
   "area : 'Kanagawa'",
 ]
