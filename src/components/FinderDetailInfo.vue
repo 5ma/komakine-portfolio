@@ -1,32 +1,32 @@
 <template>
   <section class="container">
-    <h2 class="title">Information</h2>
+    <h2 class="title" data-change-color-target>Information</h2>
     <template v-if="!isNoData">
-      <h3 class="site-title">{{ info.title }}</h3>
+      <h3 class="site-title" data-change-color-target>{{ info.title }}</h3>
       <dl class="data">
-        <div class="data__item" v-show="info.dev.length">
+        <div class="data__item" v-show="info.dev.length" data-change-color-target>
           <dt class="data__title">Dev</dt>
           <dd class="data__detail">
             {{ joinArrayWithComma(info.dev) }}
           </dd>
         </div>
-        <div class="data__item" v-show="info.category.length">
+        <div class="data__item" v-show="info.category.length" data-change-color-target>
           <dt class="data__title">Category</dt>
           <dd class="data__detail">
             {{ joinArrayWithComma(info.category) }}
           </dd>
         </div>
-        <div class="data__item" v-show="info.url">
+        <div class="data__item" v-show="info.url" data-change-color-target>
           <dt class="data__title">URL</dt>
           <dd class="data__detail">
             <a :href="info.url" target="_blank" rel="noopener">{{ info.url }}</a>
           </dd>
         </div>
       </dl>
-      <p class="sup" v-if="info.supplement" v-html="formattedText"></p>
+      <p class="sup" v-if="info.supplement" v-html="formattedText" data-change-color-target></p>
     </template>
     <template v-else>
-      <div class="no-data">一致する項目はありません。</div>
+      <div class="no-data" data-change-color-target>一致する項目はありません。</div>
     </template>
   </section>
 </template>

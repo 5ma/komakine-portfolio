@@ -6,11 +6,14 @@ import ProfileDataType from "@components/profileDataType.astro";
 <header class="header l-sp-inner l-pc-inner">
   <div class="title-wrapper" data-typed-wrapper="title">
     <h1 class="visually-hidden">Anna<br>Komakine</h1>
-    <div class="title" aria-hidden="true" data-typed-output="title"></div>
-    <div class="title" aria-hidden="true" data-typed-output="title"></div>
+    {Array.from({ length: 2 }, () => (
+      <div class="title-item" data-change-color-target>
+        <div class="title" aria-hidden="true" data-typed-output="title"></div>
+      </div>
+    ))}
   </div>
   <div class="data" data-type="trigger" data-type-target="js-profile-type">
-    <span data-typed-output="json"></span>
+    <span data-typed-output="json" data-change-color-target></span>
     <div class="data__type" id="js-profile-type">
       <ProfileDataType />
     </div>
@@ -18,7 +21,7 @@ import ProfileDataType from "@components/profileDataType.astro";
   <dl class="network">
     {
       Array.from({length: 3}, () => (
-        <div class="network__item">
+        <div class="network__item" data-change-color-target>
           <dt class="network__title" data-typed-output="network-title"></dt>
           <dd class="network__description" data-typed-output="network-desc"></dd>
         </div>
@@ -83,6 +86,11 @@ import ProfileDataType from "@components/profileDataType.astro";
     }
   }
 
+  .title-item {
+    position: relative;
+    overflow: hidden;
+  }
+
   .title {
     position: relative;
     text-transform: uppercase;
@@ -93,16 +101,18 @@ import ProfileDataType from "@components/profileDataType.astro";
       position: absolute;
       left: calc(100% + 0.07em);
       bottom: 0.1em;
-      display: none;
+      opacity: 0;
       width: 0.65em;
       height: 0.08em;
       background-color: var(--color-theme-current);
       content: '';
+      pointer-events: none;
       transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
     }
     :global(.barba-leave-active) & {
       &::after {
-        display: block;
+        opacity: 1;
+        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s, opacity 0s .1s;
       }
     }
   }

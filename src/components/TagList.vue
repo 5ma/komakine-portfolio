@@ -5,7 +5,7 @@
         type="button"
         class="tag"
         @click="updateValue(tag.value)"
-        :class="{ 'is-active' : selectedTags.includes(tag.value) }">
+        :class="{ 'is-active' : selectedTags.includes(tag.value) }" data-change-color-target data-change-color-delay="5">
         <span class="tag__text">#{{ tag.displayName }}</span>
       </button>
     </li>

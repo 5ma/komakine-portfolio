@@ -1,5 +1,5 @@
 <template>
-  <label class="dropdown" v-show="categories.length">
+  <label class="dropdown" v-show="categories.length" data-change-color-target>
     <span class="dropdown__label">Category</span>
     <div class="dropdown__wrapper">
       <select

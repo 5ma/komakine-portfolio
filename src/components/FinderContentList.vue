@@ -23,7 +23,7 @@
               alt=""
             >
           </div>
-          <div class="finder-content__title">{{ item.title }}</div>
+          <div class="finder-content__title" data-change-color-target data-change-color-delay="0">{{ item.title }}</div>
         </a>
       </li>
     </TransitionGroup>
