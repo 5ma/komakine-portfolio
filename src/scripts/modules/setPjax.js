@@ -3,6 +3,7 @@ import barbaPrefetch from '@barba/prefetch';
 import { setUpJs } from '@scripts/modules/setUpJs';
 import { container } from '@scripts/modules/dom';
 import { LEAVE_DURATION, transitionOnEnter, transitionOnLeave } from '@scripts/modules/pageTransitions';
+import { siteTheme } from "@scripts/modules/siteTheme";
 
 export const setPjax = () => {
   // tell Barba to use the prefetch plugin
@@ -36,10 +37,17 @@ export const setPjax = () => {
           import.meta.env.DEV && console.log('pjax after enter')
           container.classList.add('barba-after-enter')
           container.classList.remove('barba-leave-active', 'is-enter')
+
+          // サイトのテーマカラーを変えるタイマーを再開
+          siteTheme.start()
         },
         leave() {
           import.meta.env.DEV && console.log('pjax leave')
           container.classList.add('barba-leave-active')
+
+          // サイトのテーマカラーを変えるタイマーを一旦STOPする
+          siteTheme.pause()
+
           transitionOnLeave()
 
           return new Promise((resolve) => {

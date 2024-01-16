@@ -57,6 +57,7 @@ export const siteTheme = {
 
     // 要素をアニメーションさせながらテーマカラーを適用させていく
     const targets = document.querySelectorAll('[data-change-color-target]')
+
     let totalDelay = 0
     const defaultAddDelay = 45 // ms
 

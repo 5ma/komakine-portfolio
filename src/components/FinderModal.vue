@@ -30,6 +30,7 @@
 
 <script>
 import { scroll } from '@scripts/modules/scroll'
+import { siteTheme } from "@scripts/modules/siteTheme";
 
 export default {
   data() {
@@ -42,8 +43,16 @@ export default {
   },
   watch: {
     isOpen() {
-      // モーダルが開いている時は後ろのコンテンツがスクロールしないようにする
-      this.isOpen ? scroll.stop() : scroll.start()
+      if (this.isOpen) {
+        // モーダルが開いている時は後ろのコンテンツがスクロールしないようにする
+        scroll.stop()
+        // サイトのテーマカラーを変えるタイマーを一旦STOPする
+        siteTheme.pause()
+      } else {
+        scroll.start()
+        // サイトのテーマカラーを変えるタイマーを再開
+        siteTheme.start()
+      }
     }
   },
   mounted() {
