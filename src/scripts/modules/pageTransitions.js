@@ -94,7 +94,7 @@ export const transitionOnEnter = (page) => {
       strings: [`{ page: '${page.charAt(0).toUpperCase()}${page.slice(1)}' }`],
       loop: false,
       onComplete: ({ el }) => {
-        el.closest('.data').classList.add('is-typed-complete');
+        el.closest('.data').classList.add('is-typed-complete')
       },
     });
   }
@@ -110,6 +110,7 @@ export const transitionOnEnter = (page) => {
             typeof networkData[i].desc === "function"
               ? networkData[i].desc()
               : networkData[i].desc;
+          // 値のテキストアニメーション
           return shuffleLetters(el.nextElementSibling, {
             text: descText,
             iterations: 3,
