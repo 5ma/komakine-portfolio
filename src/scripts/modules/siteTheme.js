@@ -83,7 +83,7 @@ const onCompletedFunc = {
 export const siteTheme = {
   animeInstance: undefined,
   currentIndex: 0,
-  colorChangeInterval: 1000 * 10, // 10秒ごとに色を変更
+  colorChangeInterval: 1000 * 5, // 10秒ごとに色を変更
   colors: [
     'white',
     'pink',
@@ -121,11 +121,31 @@ export const siteTheme = {
     let totalDelay = 0
     const defaultAddDelay = 60 // ms
 
-    targets.forEach((target, i) => {
+    targets.forEach((target) => {
       const addDelay = target.dataset?.changeColorDelay ?? defaultAddDelay
       totalDelay += parseInt(addDelay)
       const functionName = target.dataset?.changeColorFunc
       anime(animation.blinkTwice(target, totalDelay, functionName))
+    })
+  },
+  applyOnlyColor() {
+    console.log('applyOnlyColor')
+    const targets = document.querySelectorAll('[data-change-color-target]')
+    targets.forEach((target) => {
+      const functionName = target.dataset?.changeColorFunc
+      // none or 空文字の時、何もしない
+      if (functionName === 'none' || functionName === '') return
+
+      // 何も値が渡されなかった時はデフォルトで文字色変更の関数を実行
+      if (functionName == undefined) {
+        onCompletedFunc.color(target)
+        return
+      }
+
+      const funcNameArray = functionName.split(',')
+      funcNameArray.forEach((funcName) => {
+        onCompletedFunc[funcName.trim()](target)
+      })
     })
   },
   attach() {
@@ -149,7 +169,7 @@ export const siteTheme = {
     circleButtonElm.setAttribute('aria-label', 'サイトのテーマカラー自動切り替えを再開する')
   },
   set() {
-    // this.changeColor(0)
+    this.applyOnlyColor()
     this.setAnime()
     this.attach()
   }

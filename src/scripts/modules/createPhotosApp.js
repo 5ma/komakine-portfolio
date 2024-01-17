@@ -2,6 +2,7 @@ import { createApp } from 'vue/dist/vue.esm-bundler'
 import { client } from '@scripts/modules/client'
 import FinderContentList from '@components/FinderContentList.vue'
 import FinderDetailInfo from '@components/FinderDetailInfo.vue'
+import { siteTheme } from './siteTheme'
 
 export const createPhotosApp = () => {
 
@@ -24,7 +25,7 @@ export const createPhotosApp = () => {
       this.getData()
     },
     methods: {
-      getData() {
+      async getData() {
         client.get({
           endpoint: 'photos',
           queries: {
@@ -36,6 +37,10 @@ export const createPhotosApp = () => {
           this.data = res.contents
           // 一番最初のデータを詳細に表示しておく
           this.detail = this.data[0]
+
+          this.$nextTick(() => {
+            siteTheme.applyOnlyColor()
+          })
         })
         .catch((err) => {
           console.log(err)

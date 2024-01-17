@@ -4,6 +4,7 @@ import FinderContentList from '@components/FinderContentList.vue'
 import FinderDetailInfo from '@components/FinderDetailInfo.vue'
 import TagList from '@components/TagList.vue'
 import CategoryDropdown from '@components/CategoryDropdown.vue'
+import { siteTheme } from './siteTheme'
 
 export const createWorksApp = () => {
   let url = new URL(location.href)
@@ -46,6 +47,10 @@ export const createWorksApp = () => {
           this.data = res.contents
           // 一番最初のデータを詳細に表示しておく
           this.detail = this.data[0]
+
+          this.$nextTick(() => {
+            siteTheme.applyOnlyColor()
+          })
         })
         .catch((err) => {
           console.log(err)

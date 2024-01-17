@@ -1,4 +1,5 @@
 import { createModalApp } from "@scripts/modules/createModalApp"
+import { siteTheme } from "@scripts/modules/siteTheme"
 import { toggleViewMode } from "@scripts/modules/toggleViewMode"
 
 export const TOP = {
@@ -17,6 +18,7 @@ export const TOP = {
   enter() {
     toggleViewMode()
     this.initModalVue()
+    siteTheme.applyOnlyColor()
   },
   leave() {
     this.destroyModalVue()
