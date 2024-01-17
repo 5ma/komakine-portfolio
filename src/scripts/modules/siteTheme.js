@@ -8,11 +8,11 @@ const animation = {
     // 2回点滅するアニメーション
     return {
       targets,
-      opacity: [1, 0.3, 1],
+      opacity: [1, 0.2, 1, 0.6, 1],
       duration: 400,
       delay,
       loop: 1,
-      easing: 'linear',
+      easing: 'easeOutExpo',
       complete() {
         // none or 空文字の時、何もしない
         if (onCompleted === 'none' || onCompleted === '') return
@@ -83,7 +83,7 @@ const onCompletedFunc = {
 export const siteTheme = {
   animeInstance: undefined,
   currentIndex: 0,
-  colorChangeInterval: 1000 * 5, // 10秒ごとに色を変更
+  colorChangeInterval: 1000 * 10, // 10秒ごとに色を変更
   colors: [
     'white',
     'pink',
@@ -129,7 +129,6 @@ export const siteTheme = {
     })
   },
   applyOnlyColor() {
-    console.log('applyOnlyColor')
     const targets = document.querySelectorAll('[data-change-color-target]')
     targets.forEach((target) => {
       const functionName = target.dataset?.changeColorFunc
