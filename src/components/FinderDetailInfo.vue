@@ -3,7 +3,15 @@
     <h2 class="title" data-change-color-target>Information</h2>
     <template v-if="!isNoData">
       <h3 class="site-title" data-change-color-target>{{ info.title }}</h3>
-      <dl class="data">
+      <dl class="data" v-if="isPhotos">
+        <div class="data__item" v-show="info.date">
+          <dt class="data__title">Date</dt>
+          <dd class="data__detail" data-change-color-target>
+            {{ formatDate }}
+          </dd>
+        </div>
+      </dl>
+      <dl class="data" v-else>
         <div class="data__item" v-show="info.dev.length">
           <dt class="data__title">Dev</dt>
           <dd class="data__detail" data-change-color-target>
@@ -36,6 +44,11 @@
 <script>
 export default {
   props: {
+    isPhotos: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     info: {
       type: Object,
       default: () => ({}),
@@ -57,6 +70,14 @@ export default {
     formattedText() {
       // \n を <br> に変換
       return this.info.supplement.replace(/\n/g, '<br>')
+    },
+    formatDate() {
+      const date = new Date(this.info.date)
+      const year = date.getFullYear()
+      const month = (date.getMonth() + 1).toString().padStart(2, '0')
+      const day = date.getDate().toString().padStart(2, '0')
+
+      return `${year}/${month}/${day}`
     }
   }
 }

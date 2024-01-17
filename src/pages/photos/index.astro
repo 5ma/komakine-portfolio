@@ -1,0 +1,32 @@
+---
+import ArrowBackLink from '@components/ArrowBackLink.astro';
+import Layout from '@layouts/Layout.astro';
+import LineSeparator from '@components/LineSeparator.astro';
+---
+
+<Layout title="Photos | ">
+  <div class="contents l-sp-inner l-pc-inner l-in u-pt-sp-62 u-pt-pc-100 u-mt-pc-23 u-pb-pc-150 u-pb-sp-106" data-barba="container" data-barba-namespace="photos">
+    <div id="v-photos">
+      <div class="l-in__header">
+        <ArrowBackLink
+          href='/'
+          text='Back'
+          class='l-in__back'
+        />
+      </div>
+      <div class="l-in__content u-pt-sp-45 u-pt-pc-98 u-pb-pc-32">
+        <finder-detail-info
+          :is-photos="true"
+          :info="detail"
+          :is-no-data="data.length === 0"
+        />
+        <LineSeparator />
+        <finder-content-list
+          :is-photos="true"
+          :contents="sortedByDateDesc"
+          @on-hover="updateDetailInfo"
+        />
+      </div>
+    </div>
+  </div>
+</Layout>

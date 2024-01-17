@@ -12,6 +12,7 @@
           target="_blank"
           rel="noopener"
           @mouseenter="updateInfo(item)"
+          v-if="!isPhotos"
         >
           <div class="finder-content__thumb">
             <img
@@ -25,6 +26,19 @@
           </div>
           <div class="finder-content__title">{{ item.title }}</div>
         </a>
+        <div class="finder-content__link" @mouseenter="updateInfo(item)" v-else>
+          <div class="finder-content__thumb">
+            <img
+              class="finder-content__thumb-img"
+              :src="item.img.url"
+              :width="item.img.width"
+              :height="item.img.height"
+              loading="lazy"
+              alt=""
+            >
+          </div>
+          <div class="finder-content__title">{{ item.title }}</div>
+        </div>
       </li>
     </TransitionGroup>
     <div class="no-data" v-show="!contents.length">
@@ -36,6 +50,11 @@
 <script>
 export default {
   props: {
+    isPhotos: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     contents: {
       type: Array,
       default: () => [],
@@ -45,7 +64,7 @@ export default {
   methods: {
     updateInfo(item) {
       this.$emit('onHover', item)
-    }
+    },
   }
 }
 </script>
@@ -76,7 +95,6 @@ export default {
     &__link {
       position: relative;
       display: block;
-      text-align: center;
       text-decoration: none;
     }
 
@@ -140,6 +158,7 @@ export default {
       @include fz-vw(11, 375, 375 * $font_flex_sp, 375);
       line-height: math.div(26, 16);
       letter-spacing: 0.05em;
+      text-align: center;
       overflow-wrap: anywhere;
       border-radius: 5px;
       transition: color .3s;
