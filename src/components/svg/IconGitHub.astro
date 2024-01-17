@@ -6,13 +6,6 @@ interface Props {
 const { label } = Astro.props;
 ---
 
-<svg viewBox="0 0 98 96" role="img" aria-label={label}>
+<svg viewBox="0 0 98 96" role="img" aria-label={label} data-change-fill>
   <use href="/assets/image/symbol/github_mark_white.svg#icon-github"></use>
 </svg>
-
-<style lang="scss">
-  svg {
-    fill: var(--color-theme-current);
-    transition: fill cubic-bezier(0.83, 0, 0.17, 1) 1s;
-  }
-</style>

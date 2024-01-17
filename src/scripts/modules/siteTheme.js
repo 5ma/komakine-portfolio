@@ -8,15 +8,75 @@ const animation = {
     // 2回点滅するアニメーション
     return {
       targets,
-      opacity: [1, 0, 1, 0.4, 1],
-      duration: 300,
+      opacity: [1, 0.3, 1],
+      duration: 400,
       delay,
       loop: 1,
-      easing: 'steps(5)',
+      easing: 'linear',
       complete() {
-        if (onCompleted) onCompleted()
+        // none or 空文字の時、何もしない
+        if (onCompleted === 'none' || onCompleted === '') return
+
+        // 何も値が渡されなかった時はデフォルトで文字色変更の関数を実行
+        if (onCompleted == undefined) {
+          onCompletedFunc.color(targets)
+          return
+        }
+
+        const funcNameArray = onCompleted.split(',')
+        funcNameArray.forEach((funcName) => {
+          onCompletedFunc[funcName.trim()](targets)
+        })
       }
     }
+  }
+}
+
+// 2回点滅後に実行する関数
+// ex: 文字色の適用、背景色の適用、SVGのfillの色適用etc...
+const onCompletedFunc = {
+  currentColor() {
+    return `var(--color-theme-${siteTheme.colors[siteTheme.currentIndex]})`
+  },
+  color(target) {
+    // 文字色を変える
+    target.style.color = this.currentColor()
+  },
+  bg(target) {
+    // 背景色を変える
+    target.style.backgroundColor = this.currentColor()
+  },
+  border(target) {
+    // ボーダーの色を変える
+    target.style.borderColor = this.currentColor()
+  },
+  childBg(target) {
+    // 子要素の背景色を変える
+    const changeBgElms = target.querySelectorAll('[data-change-bg]')
+    changeBgElms.forEach((changeBgElm) => {
+      changeBgElm.style.backgroundColor = this.currentColor()
+    })
+  },
+  childBorder(target) {
+    // 子要素のボーダーの色を変える
+    const changeBorderElms = target.querySelectorAll('[data-change-border]')
+    changeBorderElms.forEach((changeBorderElm) => {
+      changeBorderElm.style.borderColor = this.currentColor()
+    })
+  },
+  childFill(target) {
+    // 子要素のSVG要素のfillを変える
+    const changeSvgElms = target.querySelectorAll('[data-change-fill]')
+    changeSvgElms.forEach((changeSvgElm) => {
+      changeSvgElm.style.fill = this.currentColor()
+    })
+  },
+  childStroke(target) {
+    // 子要素のSVG要素のstrokeを変える
+    const changeSvgElms = target.querySelectorAll('[data-change-stroke]')
+    changeSvgElms.forEach((changeSvgElm) => {
+      changeSvgElm.style.stroke = this.currentColor()
+    })
   }
 }
 
@@ -59,12 +119,13 @@ export const siteTheme = {
     const targets = document.querySelectorAll('[data-change-color-target]')
 
     let totalDelay = 0
-    const defaultAddDelay = 45 // ms
+    const defaultAddDelay = 60 // ms
 
     targets.forEach((target, i) => {
       const addDelay = target.dataset?.changeColorDelay ?? defaultAddDelay
       totalDelay += parseInt(addDelay)
-      anime(animation.blinkTwice(target, totalDelay))
+      const functionName = target.dataset?.changeColorFunc
+      anime(animation.blinkTwice(target, totalDelay, functionName))
     })
   },
   attach() {
@@ -88,7 +149,7 @@ export const siteTheme = {
     circleButtonElm.setAttribute('aria-label', 'サイトのテーマカラー自動切り替えを再開する')
   },
   set() {
-    this.changeColor(this.currentIndex) // 初期値をset
+    // this.changeColor(0)
     this.setAnime()
     this.attach()
   }

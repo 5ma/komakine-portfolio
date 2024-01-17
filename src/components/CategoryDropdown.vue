@@ -1,12 +1,14 @@
 <template>
-  <label class="dropdown" v-show="categories.length" data-change-color-target>
+  <label class="dropdown" v-show="categories.length" data-change-color-target data-change-color-func="color,childBg,childBorder">
     <span class="dropdown__label">Category</span>
     <div class="dropdown__wrapper">
+      <span class="dropdown__triangle" data-change-bg></span>
       <select
         class="dropdown__select"
         :value="selectedCategory"
         @change="updateValue"
         data-category-select
+        data-change-border
       >
         <optgroup>
           <option value="all">all</option>
@@ -52,7 +54,6 @@ export default {
 
   .dropdown {
     display: block;
-    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     &__label {
       display: block;
@@ -74,24 +75,22 @@ export default {
       @include pc {
         margin-top: 2px;
       }
+    }
 
-      &::after {
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        width: 7px;
-        height: 6px;
-        content: '';
-        background-color: var(--color-theme-current);
-        transform: translateY(-50%);
-        clip-path: polygon(50% 100%, 0 0, 100% 0);
-        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+    &__triangle {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      width: 7px;
+      height: 6px;
+      background-color: var(--color-theme-white);
+      transform: translateY(-50%);
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
 
-        @include pc {
-          right: 10px;
-          width: 10px;
-          height: 9px;
-        }
+      @include pc {
+        right: 10px;
+        width: 10px;
+        height: 9px;
       }
     }
 
@@ -103,10 +102,9 @@ export default {
       font-family: inherit;
       font-size: px-to-rem(13);
       border: 0;
-      border-bottom: 1px solid var(--color-theme-current);
+      border-bottom: 1px solid var(--color-theme-white);
       background: none;
       cursor: pointer;
-      transition: border-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
       @include pc {
         padding: 5px 30px 5px 10px;

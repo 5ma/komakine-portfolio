@@ -97,7 +97,6 @@ const { title, date, type, href } = Astro.props;
     @include fz-vw(13, 375, 375 * 2, 375 * $font_shrink_sp);
     line-height: 1.3;
     letter-spacing: 0.03em;
-    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       margin-top: 0;
@@ -210,8 +209,7 @@ const { title, date, type, href } = Astro.props;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      fill: var(--color-theme-current);
-      transition: fill cubic-bezier(0.83, 0, 0.17, 1) 1s;
+      fill: var(--color-theme-white);
     }
 
     :global(#{$listViewMode}) & {

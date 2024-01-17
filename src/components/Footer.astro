@@ -4,10 +4,10 @@ import IconGitHub from "@components/svg/IconGitHub.astro";
 ---
 
 <footer class="footer l-sp-inner l-pc-inner">
-  <span class="footer__line" data-change-color-target></span>
+  <span class="footer__line" data-change-color-target data-change-color-func="border"></span>
   <dl class="link">
     <div class="link__item">
-      <dt class="link__title" data-change-color-target>
+      <dt class="link__title" data-change-color-target data-change-color-func="color,childFill">
         GitHub
         <div class="link__icon">
           <IconGitHub />
@@ -31,12 +31,12 @@ import IconGitHub from "@components/svg/IconGitHub.astro";
       </dd>
     </div>
     <div class="link__item">
-      <dt class="link__title" data-change-color-target>
+      <dt class="link__title" data-change-color-target data-change-color-func="color,childStroke">
         Email
         <div class="link__icon link__icon--mail">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
-            ><rect width="48" height="48" fill="none"
-            ></rect><rect
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+            <rect width="48" height="48" fill="none" data-change-stroke></rect>
+            <rect
               x="6"
               y="13"
               width="36"
@@ -46,14 +46,15 @@ import IconGitHub from "@components/svg/IconGitHub.astro";
               stroke="#000"
               stroke-linecap="round"
               stroke-linejoin="round"
-              fill="none"></rect><polyline
+              fill="none" data-change-stroke></rect>
+              <polyline
               points="6 19 24 31 42 19"
               fill="none"
               stroke="#000"
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"></polyline></svg
-          >
+              stroke-width="2" data-change-stroke></polyline>
+          </svg>
         </div>
       </dt>
       <dd class="link__description" data-change-color-target>
@@ -66,7 +67,7 @@ import IconGitHub from "@components/svg/IconGitHub.astro";
   <dl class="tool">
     <dt class="tool__title" data-change-color-target>Tools</dt>
     <div class="tool__list">
-      {tools.map((tool) => <dd class="tool__item" data-change-color-target data-change-color-delay="5">{tool}</dd>)}
+      {tools.map((tool) => <dd class="tool__item" data-change-color-target data-change-color-delay="6">{tool}</dd>)}
     </div>
   </dl>
 </footer>
@@ -83,16 +84,14 @@ import IconGitHub from "@components/svg/IconGitHub.astro";
     @include pc {
       padding: 60px 0 88px;
     }
-  }
-
-  .footer__line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    border-top: 1px solid var(--color-theme-current);
-    transition: border-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+    &__line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid;
+    }
   }
 
   .link {
@@ -143,8 +142,7 @@ import IconGitHub from "@components/svg/IconGitHub.astro";
 
         rect,
         polyline {
-          stroke: var(--color-theme-current);
-          transition: stroke cubic-bezier(0.83, 0, 0.17, 1) 1s;
+          stroke: var(--color-theme-white);
         }
       }
       :global(svg) {

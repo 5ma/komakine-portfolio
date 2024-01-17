@@ -1,21 +1,21 @@
 ---
 ---
 
-<button type="button" class="button" aria-label="コンテンツの表示形式を切り替える" data-change-view data-change-color-target>
+<button type="button" class="button" aria-label="コンテンツの表示形式を切り替える" data-change-view data-change-color-target data-change-color-func="color,childBg">
   <span class="type type--icon">
     <span class="type__icon">
-      <span class="type__icon-cube"></span>
-      <span class="type__icon-cube"></span>
-      <span class="type__icon-cube"></span>
-      <span class="type__icon-cube"></span>
+      <span class="type__icon-cube" data-change-bg></span>
+      <span class="type__icon-cube" data-change-bg></span>
+      <span class="type__icon-cube" data-change-bg></span>
+      <span class="type__icon-cube" data-change-bg></span>
     </span>
     Icon View
   </span>
   <span class="type type--list">
     <span class="type__icon">
-      <span class="type__icon-bar"></span>
-      <span class="type__icon-bar"></span>
-      <span class="type__icon-bar"></span>
+      <span class="type__icon-bar" data-change-bg></span>
+      <span class="type__icon-bar" data-change-bg></span>
+      <span class="type__icon-bar" data-change-bg></span>
     </span>
     List View
   </span>
@@ -36,7 +36,6 @@
     background: none;
     border: 0;
     border-radius: 4px;
-    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     &:not(:disabled),
     &:not([aria-disabled="true"]) {
@@ -44,7 +43,7 @@
     }
 
     @include hover {
-      transition: background-color .1s, color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+      transition: background-color .1s;
 
       &:hover {
         background: rgb(var(--color-selection-blue-rgb) / 0.5);
@@ -99,16 +98,17 @@
       }
 
       &-cube {
-        background-color: var(--color-theme-current);
-        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+        background-color: var(--color-theme-white);
+        // background-color: var(--color-theme-current);
+        // transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
       }
 
       &-bar {
         position: relative;
         top: -2px;
         height: 1px;
-        background-color: var(--color-theme-current);
-        transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
+        background-color: var(--color-theme-white);
+        // transition: background-color cubic-bezier(0.83, 0, 0.17, 1) 1s;
       }
     }
   }

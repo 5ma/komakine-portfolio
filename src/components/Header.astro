@@ -21,7 +21,7 @@ import ProfileDataType from "@components/profileDataType.astro";
   <dl class="network">
     {
       Array.from({length: 3}, () => (
-        <div class="network__item" data-change-color-target>
+        <div class="network__item" data-change-color-target data-change-color-delay="30">
           <dt class="network__title" data-typed-output="network-title"></dt>
           <dd class="network__description" data-typed-output="network-desc"></dd>
         </div>

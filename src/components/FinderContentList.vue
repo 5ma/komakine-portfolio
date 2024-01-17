@@ -23,7 +23,7 @@
               alt=""
             >
           </div>
-          <div class="finder-content__title" data-change-color-target data-change-color-delay="0">{{ item.title }}</div>
+          <div class="finder-content__title">{{ item.title }}</div>
         </a>
       </li>
     </TransitionGroup>
@@ -124,6 +124,7 @@ export default {
         max-width: 100%;
         max-height: 100%;
         margin: auto;
+        background: #ccc;
         box-shadow: 0 0 0 1px #272727, 0 0 0 4px var(--color-gray-border);
         box-sizing: border-box;
 
@@ -141,6 +142,7 @@ export default {
       letter-spacing: 0.05em;
       overflow-wrap: anywhere;
       border-radius: 5px;
+      transition: color .3s;
 
       @include pc {
         margin-top: 18px;

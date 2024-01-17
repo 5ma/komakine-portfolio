@@ -4,29 +4,31 @@
     <template v-if="!isNoData">
       <h3 class="site-title" data-change-color-target>{{ info.title }}</h3>
       <dl class="data">
-        <div class="data__item" v-show="info.dev.length" data-change-color-target>
+        <div class="data__item" v-show="info.dev.length">
           <dt class="data__title">Dev</dt>
-          <dd class="data__detail">
+          <dd class="data__detail" data-change-color-target>
             {{ joinArrayWithComma(info.dev) }}
           </dd>
         </div>
-        <div class="data__item" v-show="info.category.length" data-change-color-target>
+        <div class="data__item" v-show="info.category.length">
           <dt class="data__title">Category</dt>
-          <dd class="data__detail">
+          <dd class="data__detail" data-change-color-target>
             {{ joinArrayWithComma(info.category) }}
           </dd>
         </div>
-        <div class="data__item" v-show="info.url" data-change-color-target>
+        <div class="data__item" v-show="info.url">
           <dt class="data__title">URL</dt>
-          <dd class="data__detail">
+          <dd class="data__detail" data-change-color-target>
             <a :href="info.url" target="_blank" rel="noopener">{{ info.url }}</a>
           </dd>
         </div>
       </dl>
-      <p class="sup" v-if="info.supplement" v-html="formattedText" data-change-color-target></p>
+      <div data-change-color-target>
+        <p class="sup" v-if="info.supplement" v-html="formattedText"></p>
+      </div>
     </template>
     <template v-else>
-      <div class="no-data" data-change-color-target>一致する項目はありません。</div>
+      <div class="no-data">一致する項目はありません。</div>
     </template>
   </section>
 </template>
@@ -71,7 +73,6 @@ export default {
     max-height: calc(100svh - 120px);
     padding-right: 59px;
     overflow-y: auto;
-    transition: color cubic-bezier(0.83, 0, 0.17, 1) 1s;
 
     @include pc {
       display: block;
