@@ -32,7 +32,7 @@ const today = new Date();
 const month = today.getMonth() + 1;
 const day = today.getDate();
 // 3月15日であるかどうかを判定
-if (month === 3 && day === 14) {
+if (month === 3 && day === 15) {
   console.log("今日は3月15日です🎉お誕生日おめでとう🥳");
   document.addEventListener('click', (e) => {
     party.confetti(e.target, {
