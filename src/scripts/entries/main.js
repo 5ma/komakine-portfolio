@@ -9,6 +9,7 @@ import { setUpJs } from "@scripts/modules/setUpJs"
 import { transitionOnEnter } from "@scripts/modules/pageTransitions"
 import { setToggleType } from "@scripts/modules/setToggleType"
 import { scroll } from '@scripts/modules/scroll'
+import * as party from "party-js";
 
 const page = barbaContainer.dataset.barbaNamespace
 
@@ -24,3 +25,18 @@ setUpJs.set(page)
 transitionOnEnter(page)
 // 慣性スクロールのセットアップ
 scroll.setUp()
+
+// 03/15日用特別演出
+const today = new Date();
+// 月と日を取得（月は0から始まるので、+1して調整）
+const month = today.getMonth() + 1;
+const day = today.getDate();
+// 3月15日であるかどうかを判定
+if (month === 3 && day === 14) {
+  console.log("今日は3月15日です🎉お誕生日おめでとう🥳");
+  document.addEventListener('click', (e) => {
+    party.confetti(e.target, {
+      count: party.variation.range(30, 60),
+    });
+  });
+}
